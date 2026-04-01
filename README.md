@@ -70,16 +70,13 @@ O universo de análise representa o denominador utilizado para calcular o percen
 
 Os resultados dos testes agrupados em Aud1 são apresentados a seguir:
 
-+--------------------+------+------+-----------+--------------+
-| Tipo de Teste      | Pass | Fail | Total     | % Sucesso    |
-+--------------------+------+------+-----------+--------------+
-| nulidade           | 75   | 0    | 75        | 100%         |
-| unicidade          | 28   | 6    | 34        | 82,4%        |
-| relacionamento     | 6    | 26   | 32        | 18,8%        |
-| aceito/domínio     | 41   | 9    | 50        | 82%          |
-| regra de negócio   | 6    | 6    | 12        | 50%          |
-+--------------------+------+------+-----------+--------------+
-| TOTAL              | 156  | 47   | 203       | 76,85%       |
-+--------------------+------+------+-----------+--------------+
+| Tipo de Teste    | Pass | Fail | Total | % Sucesso |
+|:-----------------|-----:|-----:|------:|----------:|
+| Nulidade         |   75 |    0 |    75 |      100% |
+| Unicidade        |   28 |    6 |    34 |     82,4% |
+| Relacionamento   |    6 |   26 |    32 |     18,8% |
+| Domínio          |   41 |    9 |    50 |       82% |
+| Regra de negócio |    6 |    6 |    12 |       50% |
+| **Total**        | **156** | **47** | **203** | **76,85%** |
 
 A baixa taxa de aprovação nos testes de relacionamento (18,8%) é diretamente explicada pela vacância semântica identificada: colunas como `RACA_COR`, `INSTRU`, `VINCPREV` e `CBOR`, preenchidas com `0` na fonte, não encontram correspondência nas tabelas de dimensão, gerando falhas de integridade referencial em massa. Os resultados individuais de cada teste, com o detalhamento por variável, universo de análise e percentual de erro, estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv).
