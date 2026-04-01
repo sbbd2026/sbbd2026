@@ -85,7 +85,7 @@ A baixa taxa de aprovação nos testes de relacionamento (18,8%) é diretamente 
 
 ### Data Profiling
 
-Após a identificação das falhas na Aud1, foi realizado data profiling via SQL diretamente no DuckDB para compreender a natureza de cada inconsistência antes da implementação das correções no estágio T2.
+Após a identificação das falhas na Aud1, foi realizado data profiling via SQL diretamente no SGBD DBeaver para compreender a natureza de cada inconsistência antes da implementação das correções no estágio T2.
 
 **Tabela `sexo`:** o profiling revelou que o dicionário do DATASUS registra dois códigos para o sexo feminino (`2` e `3`), enquanto os microdados do SIH/RD utilizam exclusivamente os códigos `1` e `3`. O código `2` nunca aparece nos registros de internação. A correção aplicada no T2 foi a remoção da linha correspondente ao código `2`.
 ```sql
