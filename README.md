@@ -60,4 +60,8 @@ Ao todo, o banco antes de **T2** totaliza **398.940.744 linhas** e pós **T2** *
 
 ## Qualidade dos Dados
 
-A camada de qualidade é implementada com testes declarativos no dbt, organizados em duas auditorias: Aud1, executada sobre os dados brutos após a carga inicial, e Aud2, executada após as transformações do estágio T2. Os resultados completos de ambas as auditorias estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv) e [testes_aud2.csv](./resultados/testes_aud2.csv), contendo para cada teste: status (aprovado/reprovado), quantidade de registros com falha, universo de análise e percentual de erro.
+A camada de qualidade é implementada com testes declarativos no dbt, organizados em duas auditorias: Aud1, executada sobre os dados brutos após a carga inicial, e Aud2, executada após as transformações do estágio T2. Os resultados completos de ambas as auditorias estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv) e [testes_aud2.csv](./resultados/testes_aud2.csv), contendo para cada teste: tipo, status (aprovado/reprovado), quantidade de registros com falha, universo de análise e percentual de erro sobre o universo.
+
+O universo de análise representa o denominador utilizado para calcular o percentual de erro de cada teste. Ele varia conforme o contexto do teste: testes sobre tabelas de dimensão utilizam o total de registros da própria dimensão, enquanto testes sobre a tabela fato utilizam o total de internações. Por exemplo, o teste de unicidade sobre a coluna `DESCRICAO` da tabela `sexo`, que possui apenas 3 registros, falhou pois o dicionário do DATASUS registra dois códigos para o sexo feminino (`2` e `3`), resultando em descrições duplicadas. Neste caso, o universo é 3 e o percentual de erro é calculado sobre esse total, e não sobre os 197.312.203 registros de internações.
+
+$$\text{pct\_universo} = \frac{\text{falhas}}{\text{universo}} \times 100 = \frac{1}{3} \times 100 = 33{,}33\%$$
