@@ -1,0 +1,182 @@
+===============================================================================================
+  RELATÓRIO DE QUALIDADE — SIH/SUS
+  Execução : 2026-04-01 03:34:33
+===============================================================================================
+
+  DIMENSÕES — PRÉ T2 (carga inicial)
+  TABELA                               REGISTROS
+  -----------------------------------------------
+  car_int                                      6
+  cbor                                     2.813
+  cid                                     14.253
+  complexidade                                 3
+  contraceptivos                              12
+  especialidade                               70
+  etnia                                      264
+  instrucao                                    4
+  internacao_procedimento            201.514.192
+  internacoes                        197.312.203
+  marca_uti                                   17
+  municipios                               5.589
+  nacionalidade                              332
+  procedimentos                            5.394
+  raca_cor                                     5
+  sexo                                         3
+  tempo                                    6.210
+  vincprev                                     6
+  -----------------------------------------------
+
+  ESTADO FINAL DO BANCO — PÓS T2 (com sentinelas e seeds)
+  TABELA                               REGISTROS
+  -----------------------------------------------
+  car_int                                      6
+  marca_uti                                   17
+  municipios                               5.589
+  socioeconomico                          72.395
+  stg_cbor                                 2.814
+  stg_cid                                 14.265
+  stg_complexidade                             4
+  stg_contraceptivos                          13
+  stg_especialidade                           71
+  stg_etnia                                  265
+  stg_hospital                             6.973
+  stg_instrucao                                5
+  stg_internacao_procedimento        201.514.192
+  stg_internacoes                    197.312.203
+  stg_nacionalidade                          333
+  stg_procedimentos                        5.401
+  stg_raca_cor                                 6
+  stg_sexo                                     2
+  stg_vincprev                                 7
+  tempo                                    6.210
+  -----------------------------------------------
+
+  CARGA POR UF
+  UF       PARQUETS     INTERNAÇÕES    ATENDIMENTOS    TEMPO (s)
+  --------------------------------------------------------------
+  AC            204         843.223         844.881         14.1
+  AL            204       2.844.294       2.960.272         21.1
+  AM            204       3.049.263       3.052.076         21.2
+  AP            204         661.638         661.638         12.6
+  BA            204      14.122.907      14.277.009         79.1
+  CE            204       8.383.557       8.484.423         48.7
+  DF            204       3.429.947       3.437.560         29.1
+  ES            204       3.948.529       3.998.702         35.3
+  GO            204       5.994.263       6.163.816         40.1
+  MA            204       7.161.154       7.250.404         45.6
+  MG            204      20.751.771      21.005.487        110.6
+  MS            204       2.869.013       2.891.068         27.5
+  MT            204       3.239.239       3.264.906         29.6
+  PA            204       8.396.331       8.398.861         53.0
+  PB            204       3.413.173       3.491.813         29.7
+  PE            204       9.279.518       9.480.518         54.2
+  PI            204       3.676.582       3.701.022         31.9
+  PR            204      13.702.029      14.015.201         84.5
+  RJ            204      11.805.628      12.485.902         82.8
+  RN            204       2.927.961       2.972.529         27.4
+  RO            204       1.864.965       1.864.965         21.3
+  RR            204         625.800         625.801         15.0
+  RS            204      12.604.636      12.683.710         79.7
+  SC            204       7.824.057       7.898.156         55.1
+  SE            204       1.633.447       1.651.201         23.4
+  SP            204      40.707.204      42.392.056        311.3
+  TO            204       1.552.074       1.560.215         27.3
+  --------------------------------------------------------------
+
+  RESUMO GERAL
+  Internações  : 197.312.203
+  Atendimentos : 201.514.192
+  Total linhas : 398.940.744
+  Disco        : 19328.5 MB
+  Tempo total  : 1412.3s (23.5 min)
+
+
+  [ T1 ]
+  PASS=156  FAIL=47  TOTAL=203
+  Taxa de sucesso : 76.8%   Taxa de falha : 23.2%
+
+  TIPO DE TESTE                    PASS    FAIL   TOTAL   % SUCESSO
+  -----------------------------------------------------------------
+  nulidade                           75       0      75      100.0%
+  unicidade                          28       6      34       82.4%
+  relacionamento                      6      26      32       18.8%
+  domínio                            41       9      50       82.0%
+  regra de negócio                    6       6      12       50.0%
+
+  TESTE                                                             ERROS         UNIVERSO    % UNIVERSO
+  ----------------------------------------------------------------------------------------------------
+  source_relationships_main_internacoes_CBOR__CBOR__so...     197.291.930      197.312.203      99.9897%
+  source_relationships_main_internacoes_VINCPREV__VINC...     197.291.930      197.312.203      99.9897%
+  source_relationships_main_internacoes_CONTRACEP2__CO...     195.927.632      197.312.203      99.2983%
+  source_relationships_main_internacoes_CID_NOTIF__CID...     195.204.833      197.312.203      98.9320%
+  source_relationships_main_internacoes_CONTRACEP1__CO...     195.191.469      197.312.203      98.9252%
+  source_relationships_main_internacoes_INSTRU__INSTRU...     195.191.299      197.312.203      98.9251%
+  source_relationships_main_internacoes_CID_MORTE__CID...     194.468.317      197.312.203      98.5587%
+  source_relationships_main_internacoes_DIAG_SECUN__CI...     186.853.684      197.312.203      94.6995%
+  dbt_utils_source_accepted_range_main_internacoes_ETN...     167.081.073      197.312.203      84.6785%
+  source_relationships_main_internacoes_ETNIA__ETNIA__...     167.081.073      197.312.203      84.6785%
+  source_relationships_main_internacoes_DIAGSEC9__CID_...     131.115.052      197.312.203      66.4506%
+  source_relationships_main_internacoes_DIAGSEC8__CID_...     131.113.067      197.312.203      66.4495%
+  source_relationships_main_internacoes_DIAGSEC7__CID_...     131.090.307      197.312.203      66.4380%
+  source_relationships_main_internacoes_DIAGSEC6__CID_...     131.051.250      197.312.203      66.4182%
+  source_relationships_main_internacoes_DIAGSEC5__CID_...     130.941.743      197.312.203      66.3627%
+  source_relationships_main_internacoes_DIAGSEC4__CID_...     130.670.648      197.312.203      66.2253%
+  source_relationships_main_internacoes_DIAGSEC3__CID_...     130.043.198      197.312.203      65.9073%
+  source_relationships_main_internacoes_DIAGSEC2__CID_...     128.377.876      197.312.203      65.0633%
+  source_relationships_main_internacoes_DIAGSEC1__CID_...     106.344.811      197.312.203      53.8967%
+  internacoes_insc_pn_sexo                                     81.763.087       81.763.104     100.0000%
+  source_relationships_main_internacoes_RACA_COR__RACA...      48.509.074      197.312.203      24.5849%
+  internacoes_idade                                             1.875.400      197.312.203       0.9505%
+  source_relationships_main_internacoes_MUNIC_RES__CO_...       1.262.450      197.312.203       0.6398%
+  internacoes_uti_int_to_marca_uti                                673.568        1.096.836      61.4101%
+  internacoes_val_uti_marca_uti                                    95.120       13.569.682       0.7010%
+  source_relationships_main_internacao_procedimento_PR...          17.535      197.312.203       0.0089%
+  internacoes_uti_int_to_dias_perm                                 11.452        1.096.836       1.0441%
+  source_relationships_main_internacoes_ESPEC__ESPEC__...           2.818      197.312.203       0.0014%
+  source_relationships_main_internacoes_DIAG_PRINC__CI...           1.761      197.312.203       0.0009%
+  internacoes_morte_false_cid_morte                                   322        8.501.763       0.0038%
+  source_unique_main_cid_DESCRICAO                                    293           14.253       2.0557%
+  source_unique_main_procedimentos_NOME_PROC                          153            5.394       2.8365%
+  source_unique_main_cbor_DESCRICAO                                    73            2.813       2.5951%
+  source_relationships_main_hospital_MUNIC_MOV__CO_MUN...              23      197.312.203       0.0000%
+  source_relationships_main_internacoes_NACIONAL__NACI...              16      197.312.203       0.0000%
+  source_relationships_main_internacoes_COMPLEX__COMPL...              12      197.312.203       0.0000%
+  source_unique_main_especialidade_DESCRICAO                            7               70      10.0000%
+  source_accepted_values_main_internacoes_INSTRU__1__2...               5      197.312.203       0.0000%
+  source_accepted_values_main_internacoes_CONTRACEP1__...               2      197.312.203       0.0000%
+  source_accepted_values_main_internacoes_CONTRACEP2__...               2      197.312.203       0.0000%
+  source_accepted_values_main_internacoes_COMPLEX__01_...               1      197.312.203       0.0000%
+  source_accepted_values_main_internacoes_RACA_COR__1_...               1      197.312.203       0.0000%
+  source_accepted_values_main_sexo_SEXO__1__3                           1      197.312.203       0.0000%
+  source_accepted_values_main_internacoes_ESPEC__1__2_...               1      197.312.203       0.0000%
+  source_accepted_values_main_internacoes_VINCPREV__1_...               1      197.312.203       0.0000%
+  source_unique_main_nacionalidade_DESCRICAO                            1              332       0.3012%
+  source_unique_main_sexo_DESCRICAO                                     1                3      33.3333%
+  ----------------------------------------------------------------------------------------------------
+
+
+  [ T2 ]
+  PASS=39  FAIL=8  TOTAL=47
+  Taxa de sucesso : 83.0%   Taxa de falha : 17.0%
+
+  TIPO DE TESTE                    PASS    FAIL   TOTAL   % SUCESSO
+  -----------------------------------------------------------------
+  unicidade                           1       5       6       16.7%
+  relacionamento                     26       0      26      100.0%
+  domínio                             9       0       9      100.0%
+  regra de negócio                    3       3       6       50.0%
+
+  TESTE                                                             ERROS         UNIVERSO    % UNIVERSO
+  ----------------------------------------------------------------------------------------------------
+  internacoes_uti_int_to_marca_uti_aud2                           673.568        1.096.836      61.4101%
+  internacoes_val_uti_marca_uti_aud2                               95.120       13.569.682       0.7010%
+  internacies_insc_pn_sexo_aud2                                     3.582      197.312.203       0.0018%
+  unique_stg_cid_DESCRICAO                                            293           14.253       2.0557%
+  unique_stg_procedimentos_NOME_PROC                                  153            5.394       2.8365%
+  unique_stg_cbor_DESCRICAO                                            73            2.813       2.5951%
+  unique_stg_especialidade_DESCRICAO                                    7               70      10.0000%
+  unique_stg_nacionalidade_DESCRICAO                                    1              332       0.3012%
+  ----------------------------------------------------------------------------------------------------
+
+===============================================================================================
+
