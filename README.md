@@ -1,7 +1,6 @@
 # Integração Multidimensional de Dados do SUS: Uma Abordagem ETLT com Modelagem Snowflake
 
 > SBBD 2026
-
 Este repositório disponibiliza os artefatos científicos do paper, organizados para garantir reprodutibilidade, rastreabilidade e navegação clara dos resultados. Correções pós-publicação estão disponíveis na [Errata](./ERRATA.md).
 ---
 
@@ -64,5 +63,6 @@ A camada de qualidade é implementada com testes declarativos no dbt, organizado
 
 O universo de análise representa o denominador utilizado para calcular o percentual de erro de cada teste. Ele varia conforme o contexto do teste: testes sobre tabelas de dimensão utilizam o total de registros da própria dimensão, enquanto testes sobre a tabela fato utilizam o total de internações. Por exemplo, o teste de unicidade sobre a coluna `DESCRICAO` da tabela `sexo`, que possui apenas 3 registros, falhou pois o dicionário do DATASUS registra dois códigos para o sexo feminino (`2` e `3`), resultando em descrições duplicadas. Neste caso, o universo é 3 e o percentual de erro é calculado sobre esse total, e não sobre os 197.312.203 registros de internações. A fórmula utilizada em todos os resultados e sua aplicação para o teste da tabela `sexo` são apresentadas a seguir:
 
-
+<p align="center">
 ![Formula](./docs/imagens/formula.png)
+</p>
