@@ -44,7 +44,7 @@ auxiliares.
 O grafo de linhagem da tabela central do modelo, `stg_internacoes`, ilustra o fluxo completo — das fontes brutas à esquerda, passando pela transformação T2 ao centro,
 até os testes da Aud2 à direita:
 
-![Lineage graph da stg_internacoes](./docs/imagens/stg_internacoes.png)
+![Lineage graph da stg_internacoes](./docs/imagens/linhagem_internacoes.png)
 
 
 
