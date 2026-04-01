@@ -82,3 +82,34 @@ Os resultados dos testes agrupados em Aud1 são apresentados a seguir:
 </div>
 
 A baixa taxa de aprovação nos testes de relacionamento (18,8%) é diretamente explicada pela vacância semântica identificada: colunas como `RACA_COR`, `INSTRU`, `VINCPREV` e `CBOR`, preenchidas com `0` na fonte, não encontram correspondência nas tabelas de dimensão, gerando falhas de integridade referencial em massa. Os resultados individuais de cada teste, com o detalhamento por variável, universo de análise e percentual de erro, estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv).
+
+### Data Profiling
+
+Após a identificação das falhas na Aud1, foi realizado data profiling via SQL diretamente no DuckDB para compreender a natureza de cada inconsistência antes da implementação das correções no estágio T2.
+
+**Tabela `sexo`:** o profiling revelou que o dicionário do DATASUS registra dois códigos para o sexo feminino (`2` e `3`), enquanto os microdados do SIH/RD utilizam exclusivamente os códigos `1` e `3`. O código `2` nunca aparece nos registros de internação. A correção aplicada no T2 foi a remoção da linha correspondente ao código `2`.
+```sql
+SELECT 
+    SEXO,
+    DESCRICAO,
+    COUNT(*) AS total
+FROM sexo
+GROUP BY SEXO, DESCRICAO
+ORDER BY SEXO;
+```
+
+![Data Profiling - Tabela Sexo](./docs/imagens/data_profiling_sexo.png)
+
+**Tabela `procedimentos`:** o profiling identificou 153 casos de `NOME_PROC` duplicado para códigos `PROC_REA` distintos, limitação herdada da própria tabela SIGTAP do DATASUS. Neste caso, nenhuma correção foi aplicada, pois a duplicidade reflete a realidade da fonte oficial.
+```sql
+SELECT 
+    NOME_PROC,
+    COUNT(*) AS total_codigos,
+    LIST(PROC_REA) AS codigos
+FROM procedimentos
+GROUP BY NOME_PROC
+HAVING COUNT(*) > 1
+ORDER BY total_codigos DESC;
+```
+
+![Data Profiling - Tabela Procedimentos](./docs/imagens/data_profiling_procedimentos.png)
