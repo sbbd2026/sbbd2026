@@ -2,15 +2,13 @@
 
 > SBBD 2026
 
-Este repositório disponibiliza os artefatos científicos do paper, organizados para garantir reprodutibilidade, rastreabilidade e navegação clara dos resultados.
-
+Este repositório disponibiliza os artefatos científicos do paper, organizados para garantir reprodutibilidade, rastreabilidade e navegação clara dos resultados. Correções pós-publicação estão disponíveis na [Errata](./ERRATA.md).
 ---
 
 
 | O que você procura                        | Onde encontrar                                                                         |
 |-------------------------------------------|----------------------------------------------------------------------------------------|
 | Documentação dos modelos, testes e lineage| [Documentação dbt](https://sbbd2026.github.io/sbbd2026/dbt_docs/)                      |
-| Correções pós-publicação                  | [Errata](./ERRATA.md)                                                                  |
 | Diagrama do modelo OLAP                   | [Modelagem](./docs/modelagem/snowflake_schema.png)                                     |
 | Dicionário de todas as tabelas            | [Dicionário de Dados](./docs/dicionario_dados.pdf)                                     |
 | Log bruto do pipeline                     | [log_bruto.log](./pipeline/log_bruto.log)                                              |
@@ -59,3 +57,7 @@ O modelo é enriquecido pela tabela fato `socioeconomico`, construída a partir 
 Ao todo, o banco antes de **T2** totaliza **398.940.744 linhas** e pós **T2** **398.940.771**. Esse incremento de 27 registros decorre da inserção estratégica de metadados via `dbt seeds` (12 registros em cid_manuais, 7 em procedimentos_manuais) e inserção via `SQL` de 8 registros sentinela nas tabelas de domínio, garantindo a integridade referencial completa do modelo.
 
 ![Diagrama Snowflake](./docs/modelagem/snowflake_schema.png)
+
+## Qualidade dos Dados
+
+A camada de qualidade é implementada com testes declarativos no dbt, organizados em duas auditorias: Aud1, executada sobre os dados brutos após a carga inicial, e Aud2, executada após as transformações do estágio T2. Os resultados completos de ambas as auditorias estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv) e [testes_aud2.csv](./resultados/testes_aud2.csv), contendo para cada teste: status (aprovado/reprovado), quantidade de registros com falha, universo de análise e percentual de erro.
