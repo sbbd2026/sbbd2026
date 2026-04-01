@@ -29,7 +29,7 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 A documentação interativa do projeto está disponível em:
 [https://sbbd2026.github.io/sbbd2026/dbt_docs/](https://sbbd2026.github.io/sbbd2026/dbt_docs/)
 
-A interface é organizada em duas áreas principais, conforme ilustrado abaixo:
+A seguir estão as áreas da interface utilizadas nesta pesquisa:
 
 ![Página inicial da documentação dbt](./docs/imagens/pagina_inicial_doc.png)
 
@@ -41,8 +41,7 @@ relacionamento e domínio) são definidos nos arquivos `.yml`. Cada tabela docum
 - **Testes e Transformações (Projects):** contém os modelos `.sql` com as transformações do estágio T2, os testes customizados de regras de negócio em SQL e os seeds com tabelas
 auxiliares.
 
-O grafo de linhagem da tabela central do modelo, `stg_internacoes`, ilustra o fluxo completo — das fontes brutas à esquerda, passando pela transformação T2 ao centro,
-até os testes da Aud2 à direita:
+- **Linhagem:** geração automática de um DAG com o fluxo completo dos dados, à esquerda as fontes brutas, ao centro as transformações T2 e à direita os testes da Aud2, conforme ilustrado abaixo:
 
 ![Lineage graph da stg_internacoes](./docs/imagens/linhagem_internacoes.png)
 
