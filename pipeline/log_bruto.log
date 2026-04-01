@@ -1,0 +1,387 @@
+2026-04-01 03:34:33 - INFO - __main__ - Iniciando Etapa 4: Carga ELT no DuckDB...
+2026-04-01 03:34:33 - INFO - data.pipeline_load - =================================== PIPELINE ETLT ===================================
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   Banco:   /home/isadora/DataVisSUS/sihrd5/sihrd5.duckdb
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   Origem:  /home/isadora/DataVisSUS/sihrd5/data/raw/sih
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   UFs:     AC, AL, AM, AP, BA, CE, DF, ES, GO, MA, MG, MS, MT, PA, PB, PE, PI, PR, RJ, RN, RO, RR, RS, SC, SE, SP, TO (27)
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   Schema: 20 tabelas criadas
+2026-04-01 03:34:33 - INFO - data.pipeline_load - 
+  DIMENSÃO                   REGISTROS
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   -------------------------------------
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   municipios                     5,589
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   cid                           14,253
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   procedimentos                  5,394
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   especialidade                     70
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   nacionalidade                    332
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   instrucao                          4
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   raca_cor                           5
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   sexo                               3
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   vincprev                           6
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   contraceptivos                    12
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   car_int                            6
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   cbor                           2,813
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   marca_uti                         17
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   etnia                            264
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   complexidade                       3
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   tempo                          6,210
+2026-04-01 03:34:33 - INFO - data.pipeline_load - 
+  UF    PARQUETS  INTERNAÇÕES     ATENDIM.   TEMPO
+2026-04-01 03:34:33 - INFO - data.pipeline_load -   ------------------------------------------------
+2026-04-01 03:34:47 - INFO - data.pipeline_load -   AC         204      843,223      844,881   14.1s
+2026-04-01 03:35:08 - INFO - data.pipeline_load -   AL         204    2,844,294    2,960,272   21.1s
+2026-04-01 03:35:29 - INFO - data.pipeline_load -   AM         204    3,049,263    3,052,076   21.2s
+2026-04-01 03:35:42 - INFO - data.pipeline_load -   AP         204      661,638      661,638   12.6s
+2026-04-01 03:37:01 - INFO - data.pipeline_load -   BA         204   14,122,907   14,277,009   79.1s
+2026-04-01 03:37:50 - INFO - data.pipeline_load -   CE         204    8,383,557    8,484,423   48.7s
+2026-04-01 03:38:19 - INFO - data.pipeline_load -   DF         204    3,429,947    3,437,560   29.1s
+2026-04-01 03:38:54 - INFO - data.pipeline_load -   ES         204    3,948,529    3,998,702   35.3s
+2026-04-01 03:39:34 - INFO - data.pipeline_load -   GO         204    5,994,263    6,163,816   40.1s
+2026-04-01 03:40:20 - INFO - data.pipeline_load -   MA         204    7,161,154    7,250,404   45.6s
+2026-04-01 03:42:11 - INFO - data.pipeline_load -   MG         204   20,751,771   21,005,487  110.6s
+2026-04-01 03:42:38 - INFO - data.pipeline_load -   MS         204    2,869,013    2,891,068   27.5s
+2026-04-01 03:43:08 - INFO - data.pipeline_load -   MT         204    3,239,239    3,264,906   29.6s
+2026-04-01 03:44:01 - INFO - data.pipeline_load -   PA         204    8,396,331    8,398,861   53.0s
+2026-04-01 03:44:30 - INFO - data.pipeline_load -   PB         204    3,413,173    3,491,813   29.7s
+2026-04-01 03:45:25 - INFO - data.pipeline_load -   PE         204    9,279,518    9,480,518   54.2s
+2026-04-01 03:45:57 - INFO - data.pipeline_load -   PI         204    3,676,582    3,701,022   31.9s
+2026-04-01 03:47:21 - INFO - data.pipeline_load -   PR         204   13,702,029   14,015,201   84.5s
+2026-04-01 03:48:44 - INFO - data.pipeline_load -   RJ         204   11,805,628   12,485,902   82.8s
+2026-04-01 03:49:11 - INFO - data.pipeline_load -   RN         204    2,927,961    2,972,529   27.4s
+2026-04-01 03:49:33 - INFO - data.pipeline_load -   RO         204    1,864,965    1,864,965   21.3s
+2026-04-01 03:49:48 - INFO - data.pipeline_load -   RR         204      625,800      625,801   15.0s
+2026-04-01 03:51:07 - INFO - data.pipeline_load -   RS         204   12,604,636   12,683,710   79.7s
+2026-04-01 03:52:03 - INFO - data.pipeline_load -   SC         204    7,824,057    7,898,156   55.1s
+2026-04-01 03:52:26 - INFO - data.pipeline_load -   SE         204    1,633,447    1,651,201   23.4s
+2026-04-01 03:57:37 - INFO - data.pipeline_load -   SP         204   40,707,204   42,392,056  311.3s
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   TO         204    1,552,074    1,560,215   27.3s
+2026-04-01 03:58:05 - INFO - data.pipeline_load - 
+  Pós-processamento:
+2026-04-01 03:58:05 - INFO - data.pipeline_load -     Nomes: 3726/6973 hospitais com razão social
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   hospital                       6,973
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   socioeconomico                72,395
+2026-04-01 03:58:05 - INFO - data.pipeline_load - 
+==================================================
+2026-04-01 03:58:05 - INFO - data.pipeline_load - CARGA CONCLUÍDA
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   UFs:     27
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   Fatos:   197,312,203 internações | 201,514,192 atendimentos
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   Total:   398,940,744 linhas no banco
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   Banco:   /home/isadora/DataVisSUS/sihrd5/sihrd5.duckdb
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   Disco:   19328.5 MB
+2026-04-01 03:58:05 - INFO - data.pipeline_load -   Tempo:   1412.3s (23.5 min)
+2026-04-01 03:58:05 - INFO - data.pipeline_load - ==================================================
+2026-04-01 03:58:06 - INFO - data.pipeline_load -   [dbt] deps — pacotes já instalados, pulando.
+2026-04-01 03:58:06 - INFO - data.pipeline_load -   [dbt] Aud1 — testando sources (baseline)...
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:09  1 of 203 PASS dbt_utils_source_accepted_range_main_etnia_ETNIA__264__1 ......... [[32mPASS[0m in 0.12s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:09  2 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_DIAS_PERM__0 .... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:09  4 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_IDADE__150__0 ... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  5 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_NACIONAL__350__0  [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  6 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_NUM_FILHOS__0 ... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  7 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_VAL_SH__0 ....... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  9 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_VAL_TOT__0 ...... [[32mPASS[0m in 0.11s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  8 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_VAL_SP__0 ....... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  10 of 203 PASS dbt_utils_source_accepted_range_main_internacoes_VAL_UTI__0 ..... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  12 of 203 PASS dbt_utils_source_accepted_range_main_municipios_longitude___28_84___73_99  [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  13 of 203 PASS dbt_utils_source_accepted_range_main_nacionalidade_NACIONAL__350__1  [[32mPASS[0m in 0.11s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  11 of 203 PASS dbt_utils_source_accepted_range_main_municipios_latitude__5_27___33_75  [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  14 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_NU_ANO__2024__2008  [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  15 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_QT_LEITOS_SUS__0  [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  16 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_QT_MEDICOS__0  [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  17 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_QT_NASCIDOS_VIVOS__0  [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  18 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_QT_OBITOS_INFANTIS__0  [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  19 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_QT_POPULACAO__0  [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  20 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_VL_LEITOS_SUS_1000__0  [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  21 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_VL_MEDICOS_1000__0  [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  22 of 203 PASS dbt_utils_source_accepted_range_main_socioeconomico_VL_MORT_INFANTIL__0  [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:10  23 of 203 PASS dbt_utils_source_accepted_range_main_tempo_ano__2024__2008 ...... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:11  24 of 203 PASS dbt_utils_source_accepted_range_main_tempo_data___2024_12_31____2008_01_01_  [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:11  25 of 203 PASS dbt_utils_source_accepted_range_main_tempo_mes__12__1 ........... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:11  26 of 203 PASS hospital_cnes_munic_mov ......................................... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:19  28 of 203 PASS internacoes_etnia_raca_cor ...................................... [[32mPASS[0m in 8.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:27  27 of 203 PASS internacoes_dt_saida_dt_inter ................................... [[32mPASS[0m in 16.46s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:58:28  31 of 203 PASS internacoes_morte_cid_morte ..................................... [[32mPASS[0m in 0.49s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:59:05  32 of 203 FAIL 322 internacoes_morte_false_cid_morte ........................... [[31mFAIL 322[0m in 37.70s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m06:59:11  33 of 203 PASS internacoes_nasc_dt_inter ....................................... [[32mPASS[0m in 5.38s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:15  29 of 203 FAIL 1875400 internacoes_idade ....................................... [[31mFAIL 1875400[0m in 124.59s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:15  34 of 203 PASS internacoes_raca_cor_etnia ...................................... [[32mPASS[0m in 64.68s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:15  30 of 203 FAIL 81763087 internacoes_insc_pn_sexo ............................... [[31mFAIL 81763087[0m in 116.56s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:16  36 of 203 FAIL 673568 internacoes_uti_int_to_marca_uti ......................... [[31mFAIL 673568[0m in 1.03s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:16  35 of 203 FAIL 11452 internacoes_uti_int_to_dias_perm .......................... [[31mFAIL 11452[0m in 1.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:17  3 of 203 FAIL 167081073 dbt_utils_source_accepted_range_main_internacoes_ETNIA__264__1  [[31mFAIL 167081073[0m in 127.33s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:17  39 of 203 PASS source_accepted_values_main_cid_TP_NIVEL__CAT__SUBCAT ........... [[32mPASS[0m in 0.31s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:17  38 of 203 PASS source_accepted_values_main_cid_RESTRSEXO__1__3__5 .............. [[32mPASS[0m in 0.39s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:17  40 of 203 PASS source_accepted_values_main_complexidade_COMPLEX__1__2__3 ....... [[32mPASS[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:17  42 of 203 PASS source_accepted_values_main_especialidade_ESPEC__1__2__3__4__5__6__7__8__9__10__11__12__13__14__15__16__31__32__33__34__35__36__37__38__39__40__41__42__43__44__45__46__47__48__49__61__62__63__64__65__66__67__68__69__70__71__72__73__74__75__76__77__78__79__80__81__82__83__84__85__86__87__88__89__90__91__92__93__94__95  [[32mPASS[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:17  41 of 203 PASS source_accepted_values_main_contraceptivos_CONTRACEPTIVO__1__2__3__4__5__6__7__8__9__10__11__12  [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:17  43 of 203 PASS source_accepted_values_main_instrucao_INSTRU__1__2__3__4 ........ [[32mPASS[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:18  45 of 203 FAIL 1 source_accepted_values_main_internacoes_COMPLEX__01__02__03 ... [[31mFAIL 1[0m in 1.02s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:18  46 of 203 FAIL 2 source_accepted_values_main_internacoes_CONTRACEP1__1__2__3__4__5__6__7__8__9__10__11__12  [[31mFAIL 2[0m in 1.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:18  44 of 203 PASS source_accepted_values_main_internacoes_CAR_INT__1__2__3__4__5__6  [[32mPASS[0m in 1.22s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:18  47 of 203 FAIL 2 source_accepted_values_main_internacoes_CONTRACEP2__1__2__3__4__5__6__7__8__9__10__11__12  [[31mFAIL 2[0m in 0.30s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:18  49 of 203 PASS source_accepted_values_main_internacoes_GESTRISCO__0__1 ......... [[32mPASS[0m in 0.24s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:19  50 of 203 PASS source_accepted_values_main_internacoes_IND_VDRL__0__1 .......... [[32mPASS[0m in 0.28s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:19  51 of 203 FAIL 5 source_accepted_values_main_internacoes_INSTRU__1__2__3__4 .... [[31mFAIL 5[0m in 0.36s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:19  52 of 203 PASS source_accepted_values_main_internacoes_MARCA_UTI__0__51__52__74__75__76__77__78__79__80__81__82__83__85__86__99__1  [[32mPASS[0m in 0.51s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  37 of 203 FAIL 95120 internacoes_val_uti_marca_uti ............................. [[31mFAIL 95120[0m in 4.24s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  53 of 203 PASS source_accepted_values_main_internacoes_MORTE__0__1 ............. [[32mPASS[0m in 0.80s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  54 of 203 FAIL 1 source_accepted_values_main_internacoes_RACA_COR__1__2__3__4__5  [[31mFAIL 1[0m in 0.52s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  57 of 203 PASS source_accepted_values_main_marca_uti_MARCA_UTI__0__1__51__52__74__75__76__77__78__79__80__81__82__83__85__86__99  [[32mPASS[0m in 0.08s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  58 of 203 PASS source_accepted_values_main_raca_cor_RACA_COR__1__2__3__4__5 .... [[32mPASS[0m in 0.08s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  59 of 203 FAIL 1 source_accepted_values_main_sexo_SEXO__1__3 ................... [[31mFAIL 1[0m in 0.10s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  60 of 203 PASS source_accepted_values_main_tempo_dia_semana__1__2__3__4__5__6__7  [[32mPASS[0m in 0.09s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  61 of 203 PASS source_accepted_values_main_tempo_trimestre__1__2__3__4 ......... [[32mPASS[0m in 0.08s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  48 of 203 FAIL 1 source_accepted_values_main_internacoes_ESPEC__1__2__3__4__5__6__7__8__9__10__11__12__13__14__15__16__31__32__33__34__35__36__37__38__39__40__41__42__43__44__45__46__47__48__49__61__62__63__64__65__66__67__68__69__70__71__72__73__74__75__76__77__78__79__80__81__82__83__84__85__86__87__88__89__90__91__92__93__94__95  [[31mFAIL 1[0m in 2.10s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  62 of 203 PASS source_accepted_values_main_vincprev_VINCPREV__1__2__3__4__5__6 . [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  55 of 203 PASS source_accepted_values_main_internacoes_SEXO__1__3 .............. [[32mPASS[0m in 0.71s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:20  56 of 203 FAIL 1 source_accepted_values_main_internacoes_VINCPREV__1__2__3__4__5__6  [[31mFAIL 1[0m in 0.71s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  63 of 203 PASS source_not_null_main_car_int_CAR_INT ............................ [[32mPASS[0m in 4.62s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  64 of 203 PASS source_not_null_main_car_int_DESCRICAO .......................... [[32mPASS[0m in 4.63s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  66 of 203 PASS source_not_null_main_cbor_DESCRICAO ............................. [[32mPASS[0m in 4.61s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  65 of 203 PASS source_not_null_main_cbor_CBOR .................................. [[32mPASS[0m in 4.66s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  67 of 203 PASS source_not_null_main_cid_CID .................................... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  68 of 203 PASS source_not_null_main_cid_DESCRICAO .............................. [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  69 of 203 PASS source_not_null_main_cid_RESTRSEXO .............................. [[32mPASS[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  70 of 203 PASS source_not_null_main_cid_TP_NIVEL ............................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  71 of 203 PASS source_not_null_main_complexidade_COMPLEX ....................... [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  72 of 203 PASS source_not_null_main_complexidade_DESCRICAO ..................... [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  74 of 203 PASS source_not_null_main_contraceptivos_DESCRICAO ................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  73 of 203 PASS source_not_null_main_contraceptivos_CONTRACEPTIVO ............... [[32mPASS[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  75 of 203 PASS source_not_null_main_especialidade_DESCRICAO .................... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  76 of 203 PASS source_not_null_main_especialidade_ESPEC ........................ [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  77 of 203 PASS source_not_null_main_etnia_DESCRICAO ............................ [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:25  78 of 203 PASS source_not_null_main_etnia_ETNIA ................................ [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  79 of 203 PASS source_not_null_main_hospital_CNES .............................. [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  80 of 203 PASS source_not_null_main_hospital_MUNIC_MOV ......................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  81 of 203 PASS source_not_null_main_instrucao_DESCRICAO ........................ [[32mPASS[0m in 0.12s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  82 of 203 PASS source_not_null_main_instrucao_INSTRU ........................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  83 of 203 PASS source_not_null_main_internacao_procedimento_N_AIH .............. [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  85 of 203 PASS source_not_null_main_internacao_procedimento_id_atendimento ..... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  84 of 203 PASS source_not_null_main_internacao_procedimento_PROC_REA ........... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  86 of 203 PASS source_not_null_main_internacoes_CAR_INT ........................ [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  87 of 203 PASS source_not_null_main_internacoes_CNES ........................... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  88 of 203 PASS source_not_null_main_internacoes_COMPLEX ........................ [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  89 of 203 PASS source_not_null_main_internacoes_CONTRACEP1 ..................... [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  90 of 203 PASS source_not_null_main_internacoes_CONTRACEP2 ..................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  91 of 203 PASS source_not_null_main_internacoes_DIAG_PRINC ..................... [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  92 of 203 PASS source_not_null_main_internacoes_DIAS_PERM ...................... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  94 of 203 PASS source_not_null_main_internacoes_DT_SAIDA ....................... [[32mPASS[0m in 0.11s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  93 of 203 PASS source_not_null_main_internacoes_DT_INTER ....................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  95 of 203 PASS source_not_null_main_internacoes_ESPEC .......................... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  96 of 203 PASS source_not_null_main_internacoes_GESTRISCO ...................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  97 of 203 PASS source_not_null_main_internacoes_IDADE .......................... [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  98 of 203 PASS source_not_null_main_internacoes_IND_VDRL ....................... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  99 of 203 PASS source_not_null_main_internacoes_INSTRU ......................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  100 of 203 PASS source_not_null_main_internacoes_MARCA_UTI ..................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  101 of 203 PASS source_not_null_main_internacoes_MORTE ......................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:26  102 of 203 PASS source_not_null_main_internacoes_MUNIC_RES ..................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  103 of 203 PASS source_not_null_main_internacoes_NACIONAL ...................... [[32mPASS[0m in 0.23s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  104 of 203 PASS source_not_null_main_internacoes_NUM_FILHOS .................... [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  105 of 203 PASS source_not_null_main_internacoes_N_AIH ......................... [[32mPASS[0m in 0.22s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  106 of 203 PASS source_not_null_main_internacoes_RACA_COR ...................... [[32mPASS[0m in 0.23s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  107 of 203 PASS source_not_null_main_internacoes_SEXO .......................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  108 of 203 PASS source_not_null_main_internacoes_VAL_SH ........................ [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  109 of 203 PASS source_not_null_main_internacoes_VAL_SP ........................ [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  110 of 203 PASS source_not_null_main_internacoes_VAL_TOT ....................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  111 of 203 PASS source_not_null_main_internacoes_VAL_UTI ....................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  112 of 203 PASS source_not_null_main_internacoes_VINCPREV ...................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  113 of 203 PASS source_not_null_main_marca_uti_DESCRICAO ....................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  114 of 203 PASS source_not_null_main_marca_uti_MARCA_UTI ....................... [[32mPASS[0m in 0.12s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  115 of 203 PASS source_not_null_main_municipios_CO_MUNICIPIO_6D ................ [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  116 of 203 PASS source_not_null_main_municipios_NO_MUNICIPIO ................... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  117 of 203 PASS source_not_null_main_municipios_SG_UF .......................... [[32mPASS[0m in 0.12s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  118 of 203 PASS source_not_null_main_nacionalidade_DESCRICAO ................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  119 of 203 PASS source_not_null_main_nacionalidade_NACIONAL .................... [[32mPASS[0m in 0.10s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  120 of 203 PASS source_not_null_main_procedimentos_NOME_PROC ................... [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  121 of 203 PASS source_not_null_main_procedimentos_PROC_REA .................... [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  123 of 203 PASS source_not_null_main_raca_cor_RACA_COR ......................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  122 of 203 PASS source_not_null_main_raca_cor_DESCRICAO ........................ [[32mPASS[0m in 0.24s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  124 of 203 PASS source_not_null_main_sexo_DESCRICAO ............................ [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  126 of 203 PASS source_not_null_main_socioeconomico_CO_MUNICIPIO_6D ............ [[32mPASS[0m in 0.11s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:27  125 of 203 PASS source_not_null_main_sexo_SEXO ................................. [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  127 of 203 PASS source_not_null_main_socioeconomico_NU_ANO ..................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  128 of 203 PASS source_not_null_main_socioeconomico_QT_NASCIDOS_VIVOS .......... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  129 of 203 PASS source_not_null_main_socioeconomico_QT_OBITOS_INFANTIS ......... [[32mPASS[0m in 0.21s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  130 of 203 PASS source_not_null_main_socioeconomico_QT_POPULACAO ............... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  132 of 203 PASS source_not_null_main_tempo_data ................................ [[32mPASS[0m in 0.10s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  131 of 203 PASS source_not_null_main_tempo_ano ................................. [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  133 of 203 PASS source_not_null_main_tempo_dia_semana .......................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  135 of 203 PASS source_not_null_main_tempo_trimestre ........................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  134 of 203 PASS source_not_null_main_tempo_mes ................................. [[32mPASS[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  136 of 203 PASS source_not_null_main_vincprev_DESCRICAO ........................ [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  137 of 203 PASS source_not_null_main_vincprev_VINCPREV ......................... [[32mPASS[0m in 0.10s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:28  138 of 203 FAIL 23 source_relationships_main_hospital_MUNIC_MOV__CO_MUNICIPIO_6D__source_main_municipios_  [[31mFAIL 23[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:29  139 of 203 FAIL 17535 source_relationships_main_internacao_procedimento_PROC_REA__PROC_REA__source_main_procedimentos_  [[31mFAIL 17535[0m in 0.99s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:29  140 of 203 PASS source_relationships_main_internacoes_CAR_INT__CAR_INT__source_main_car_int_  [[32mPASS[0m in 1.48s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:36  144 of 203 PASS source_relationships_main_internacoes_CNES__CNES__source_main_hospital_  [[32mPASS[0m in 6.36s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:36  143 of 203 FAIL 195204833 source_relationships_main_internacoes_CID_NOTIF__CID__source_main_cid_  [[31mFAIL 195204833[0m in 6.89s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:36  145 of 203 FAIL 12 source_relationships_main_internacoes_COMPLEX__COMPLEX__source_main_complexidade_  [[31mFAIL 12[0m in 0.34s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:36  142 of 203 FAIL 194468317 source_relationships_main_internacoes_CID_MORTE__CID__source_main_cid_  [[31mFAIL 194468317[0m in 8.28s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:36  141 of 203 FAIL 197291930 source_relationships_main_internacoes_CBOR__CBOR__source_main_cbor_  [[31mFAIL 197291930[0m in 8.43s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:37  146 of 203 FAIL 195191469 source_relationships_main_internacoes_CONTRACEP1__CONTRACEPTIVO__source_main_contraceptivos_  [[31mFAIL 195191469[0m in 1.08s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:38  147 of 203 FAIL 195927632 source_relationships_main_internacoes_CONTRACEP2__CONTRACEPTIVO__source_main_contraceptivos_  [[31mFAIL 195927632[0m in 2.30s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:41  148 of 203 FAIL 106344811 source_relationships_main_internacoes_DIAGSEC1__CID__source_main_cid_  [[31mFAIL 106344811[0m in 4.81s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:41  149 of 203 FAIL 128377876 source_relationships_main_internacoes_DIAGSEC2__CID__source_main_cid_  [[31mFAIL 128377876[0m in 5.12s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:42  150 of 203 FAIL 130043198 source_relationships_main_internacoes_DIAGSEC3__CID__source_main_cid_  [[31mFAIL 130043198[0m in 4.94s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:42  151 of 203 FAIL 130670648 source_relationships_main_internacoes_DIAGSEC4__CID__source_main_cid_  [[31mFAIL 130670648[0m in 3.57s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:43  152 of 203 FAIL 130941743 source_relationships_main_internacoes_DIAGSEC5__CID__source_main_cid_  [[31mFAIL 130941743[0m in 2.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:47  154 of 203 FAIL 131090307 source_relationships_main_internacoes_DIAGSEC7__CID__source_main_cid_  [[31mFAIL 131090307[0m in 5.30s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:47  155 of 203 FAIL 131113067 source_relationships_main_internacoes_DIAGSEC8__CID__source_main_cid_  [[31mFAIL 131113067[0m in 5.37s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:48  153 of 203 FAIL 131051250 source_relationships_main_internacoes_DIAGSEC6__CID__source_main_cid_  [[31mFAIL 131051250[0m in 6.47s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:48  157 of 203 FAIL 1761 source_relationships_main_internacoes_DIAG_PRINC__CID__source_main_cid_  [[31mFAIL 1761[0m in 1.00s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:48  156 of 203 FAIL 131115052 source_relationships_main_internacoes_DIAGSEC9__CID__source_main_cid_  [[31mFAIL 131115052[0m in 5.04s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:51  159 of 203 FAIL 2818 source_relationships_main_internacoes_ESPEC__ESPEC__source_main_especialidade_  [[31mFAIL 2818[0m in 3.00s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:51  158 of 203 FAIL 186853684 source_relationships_main_internacoes_DIAG_SECUN__CID__source_main_cid_  [[31mFAIL 186853684[0m in 3.59s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:51  161 of 203 FAIL 195191299 source_relationships_main_internacoes_INSTRU__INSTRU__source_main_instrucao_  [[31mFAIL 195191299[0m in 2.84s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:51  160 of 203 FAIL 167081073 source_relationships_main_internacoes_ETNIA__ETNIA__source_main_etnia_  [[31mFAIL 167081073[0m in 3.07s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:51  162 of 203 PASS source_relationships_main_internacoes_MARCA_UTI__MARCA_UTI__source_main_marca_uti_  [[32mPASS[0m in 0.34s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:52  163 of 203 FAIL 1262450 source_relationships_main_internacoes_MUNIC_RES__CO_MUNICIPIO_6D__source_main_municipios_  [[31mFAIL 1262450[0m in 0.73s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:52  164 of 203 FAIL 16 source_relationships_main_internacoes_NACIONAL__NACIONAL__source_main_nacionalidade_  [[31mFAIL 16[0m in 1.02s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  166 of 203 FAIL 48509074 source_relationships_main_internacoes_RACA_COR__RACA_COR__source_main_raca_cor_  [[31mFAIL 48509074[0m in 1.38s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  169 of 203 PASS source_relationships_main_socioeconomico_CO_MUNICIPIO_6D__CO_MUNICIPIO_6D__source_main_municipios_  [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  170 of 203 PASS source_unique_main_car_int_CAR_INT ............................. [[32mPASS[0m in 0.05s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  171 of 203 PASS source_unique_main_car_int_DESCRICAO ........................... [[32mPASS[0m in 0.06s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  167 of 203 PASS source_relationships_main_internacoes_SEXO__SEXO__source_main_sexo_  [[32mPASS[0m in 1.38s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  172 of 203 PASS source_unique_main_cbor_CBOR ................................... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  173 of 203 FAIL 73 source_unique_main_cbor_DESCRICAO ........................... [[31mFAIL 73[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  174 of 203 PASS source_unique_main_cid_CID ..................................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  175 of 203 FAIL 293 source_unique_main_cid_DESCRICAO ........................... [[31mFAIL 293[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:53  176 of 203 PASS source_unique_main_complexidade_COMPLEX ........................ [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  177 of 203 PASS source_unique_main_complexidade_DESCRICAO ...................... [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  178 of 203 PASS source_unique_main_contraceptivos_CONTRACEPTIVO ................ [[32mPASS[0m in 0.11s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  180 of 203 FAIL 7 source_unique_main_especialidade_DESCRICAO ................... [[31mFAIL 7[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  179 of 203 PASS source_unique_main_contraceptivos_DESCRICAO .................... [[32mPASS[0m in 0.21s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  168 of 203 FAIL 197291930 source_relationships_main_internacoes_VINCPREV__VINCPREV__source_main_vincprev_  [[31mFAIL 197291930[0m in 1.61s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  181 of 203 PASS source_unique_main_especialidade_ESPEC ......................... [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  182 of 203 PASS source_unique_main_etnia_DESCRICAO ............................. [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  183 of 203 PASS source_unique_main_etnia_ETNIA ................................. [[32mPASS[0m in 0.20s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  184 of 203 PASS source_unique_main_hospital_CNES ............................... [[32mPASS[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  185 of 203 PASS source_unique_main_instrucao_DESCRICAO ......................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  186 of 203 PASS source_unique_main_instrucao_INSTRU ............................ [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  189 of 203 PASS source_unique_main_marca_uti_DESCRICAO ......................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:54  190 of 203 PASS source_unique_main_marca_uti_MARCA_UTI ......................... [[32mPASS[0m in 0.12s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:55  191 of 203 PASS source_unique_main_municipios_CO_MUNICIPIO_6D .................. [[32mPASS[0m in 0.18s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:55  192 of 203 PASS source_unique_main_municipios_CO_MUNICIPIO_7D .................. [[32mPASS[0m in 0.21s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:55  193 of 203 FAIL 1 source_unique_main_nacionalidade_DESCRICAO ................... [[31mFAIL 1[0m in 0.13s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:55  194 of 203 PASS source_unique_main_nacionalidade_NACIONAL ...................... [[32mPASS[0m in 0.23s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:55  195 of 203 FAIL 153 source_unique_main_procedimentos_NOME_PROC ................. [[31mFAIL 153[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:56  196 of 203 PASS source_unique_main_procedimentos_PROC_REA ...................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:56  197 of 203 PASS source_unique_main_raca_cor_DESCRICAO .......................... [[32mPASS[0m in 0.17s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:56  198 of 203 PASS source_unique_main_raca_cor_RACA_COR ........................... [[32mPASS[0m in 0.14s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:56  199 of 203 FAIL 1 source_unique_main_sexo_DESCRICAO ............................ [[31mFAIL 1[0m in 0.19s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:56  200 of 203 PASS source_unique_main_sexo_SEXO ................................... [[32mPASS[0m in 0.10s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:56  201 of 203 PASS source_unique_main_tempo_data .................................. [[32mPASS[0m in 0.15s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:57  202 of 203 PASS source_unique_main_vincprev_DESCRICAO .......................... [[32mPASS[0m in 0.16s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:00:57  203 of 203 PASS source_unique_main_vincprev_VINCPREV ........................... [[32mPASS[0m in 0.08s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:01:26  188 of 203 PASS source_unique_main_internacoes_N_AIH ........................... [[32mPASS[0m in 32.10s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:01:30  187 of 203 PASS source_unique_main_internacao_procedimento_id_atendimento ...... [[32mPASS[0m in 36.35s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:01:31  165 of 203 PASS source_relationships_main_internacoes_N_AIH__N_AIH__source_main_internacao_procedimento_  [[32mPASS[0m in 39.32s]
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:01:31  [31mCompleted with 47 errors, 0 partial successes, and 0 warnings:[0m
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt Aud1] [0m07:01:31  Done. PASS=156 WARN=0 ERROR=47 SKIP=0 NO-OP=0 TOTAL=203
+2026-04-01 04:01:35 - INFO - data.pipeline_load -   [dbt] seed — carregando tabelas auxiliares...
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:37  Running with dbt=1.11.6
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:37  Registered adapter: duckdb=1.10.1
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  Found 15 models, 250 data tests, 2 seeds, 20 sources, 590 macros
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  Concurrency: 4 threads (target='dev')
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  1 of 2 START seed file main.cid_manuais ........................................ [RUN]
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  2 of 2 START seed file main.procedimentos_manuais .............................. [RUN]
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  2 of 2 OK loaded seed file main.procedimentos_manuais .......................... [[32mINSERT 7[0m in 0.12s]
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  1 of 2 OK loaded seed file main.cid_manuais .................................... [[32mINSERT 12[0m in 0.16s]
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  Finished running 2 seeds in 0 hours 0 minutes and 0.31 seconds (0.31s).
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  [32mCompleted successfully[0m
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt seed] [0m07:01:38  Done. PASS=2 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=2
+2026-04-01 04:01:41 - INFO - data.pipeline_load -   [dbt] T2 — aplicando correções...
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  4 of 15 OK created sql table model main.stg_contraceptivos ..................... [[32mOK[0m in 0.10s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  1 of 15 OK created sql table model main.stg_cbor ............................... [[32mOK[0m in 0.11s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  3 of 15 OK created sql table model main.stg_complexidade ....................... [[32mOK[0m in 0.12s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  2 of 15 OK created sql table model main.stg_cid ................................ [[32mOK[0m in 0.13s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  5 of 15 OK created sql table model main.stg_especialidade ...................... [[32mOK[0m in 0.09s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  6 of 15 OK created sql table model main.stg_etnia .............................. [[32mOK[0m in 0.10s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  7 of 15 OK created sql table model main.stg_hospital ........................... [[32mOK[0m in 0.11s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  8 of 15 OK created sql table model main.stg_instrucao .......................... [[32mOK[0m in 0.10s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  11 of 15 OK created sql table model main.stg_nacionalidade ..................... [[32mOK[0m in 0.12s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  12 of 15 OK created sql table model main.stg_procedimentos ..................... [[32mOK[0m in 0.20s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:43  13 of 15 OK created sql table model main.stg_raca_cor .......................... [[32mOK[0m in 0.19s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:44  14 of 15 OK created sql table model main.stg_sexo .............................. [[32mOK[0m in 0.55s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:44  15 of 15 OK created sql table model main.stg_vincprev .......................... [[32mOK[0m in 0.47s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:01:55  9 of 15 OK created sql table model main.stg_internacao_procedimento ............ [[32mOK[0m in 12.34s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:04:01  10 of 15 OK created sql table model main.stg_internacoes ....................... [[32mOK[0m in 138.33s]
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:04:01  [32mCompleted successfully[0m
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt T2 run] [0m07:04:01  Done. PASS=15 WARN=0 ERROR=0 SKIP=0 NO-OP=0 TOTAL=15
+2026-04-01 04:04:05 - INFO - data.pipeline_load -   [dbt] Aud2 — testando staging...
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:08  1 of 47 PASS accepted_values_stg_internacoes_COMPLEX__0__1__2__3 ............... [[32mPASS[0m in 0.43s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:09  3 of 47 PASS accepted_values_stg_internacoes_CONTRACEP2__0__1__2__3__4__5__6__7__8__9__10__11__12  [[32mPASS[0m in 0.93s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:09  2 of 47 PASS accepted_values_stg_internacoes_CONTRACEP1__0__1__2__3__4__5__6__7__8__9__10__11__12  [[32mPASS[0m in 0.96s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:09  5 of 47 PASS accepted_values_stg_internacoes_INSTRU__0__1__2__3__4 ............. [[32mPASS[0m in 0.74s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:09  8 of 47 PASS accepted_values_stg_sexo_SEXO__1__3 ............................... [[32mPASS[0m in 0.04s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:09  9 of 47 PASS dbt_utils_accepted_range_stg_internacoes_ETNIA__264__0 ............ [[32mPASS[0m in 0.04s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:09  6 of 47 PASS accepted_values_stg_internacoes_RACA_COR__0__1__2__3__4__5 ........ [[32mPASS[0m in 0.65s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:10  7 of 47 PASS accepted_values_stg_internacoes_VINCPREV__0__1__2__3__4__5__6 ..... [[32mPASS[0m in 0.71s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:11  4 of 47 PASS accepted_values_stg_internacoes_ESPEC__0__1__2__3__4__5__6__7__8__9__10__11__12__13__14__15__16__31__32__33__34__35__36__37__38__39__40__41__42__43__44__45__46__47__48__49__61__62__63__64__65__66__67__68__69__70__71__72__73__74__75__76__77__78__79__80__81__82__83__84__85__86__87__88__89__90__91__92__93__94__95  [[32mPASS[0m in 2.68s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:11  10 of 47 FAIL 3582 internacies_insc_pn_sexo_aud2 ............................... [[31mFAIL 3582[0m in 1.57s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:11  12 of 47 PASS internacoes_morte_false_cid_morte_aud2 ........................... [[32mPASS[0m in 1.96s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:12  13 of 47 PASS internacoes_uti_int_to_dias_perm_aud2 ............................ [[32mPASS[0m in 1.16s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:12  14 of 47 FAIL 673568 internacoes_uti_int_to_marca_uti_aud2 ..................... [[31mFAIL 673568[0m in 1.05s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:12  16 of 47 PASS relationships_stg_hospital_MUNIC_MOV__CO_MUNICIPIO_6D__source_main_municipios_  [[32mPASS[0m in 0.10s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:12  11 of 47 PASS internacoes_idade_aud2 ........................................... [[32mPASS[0m in 3.04s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:13  18 of 47 PASS relationships_stg_internacoes_CBOR__CBOR__ref_stg_cbor_ .......... [[32mPASS[0m in 1.33s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:14  19 of 47 PASS relationships_stg_internacoes_CID_MORTE__CID__source_main_cid_ ... [[32mPASS[0m in 1.02s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:14  20 of 47 PASS relationships_stg_internacoes_CID_NOTIF__CID__source_main_cid_ ... [[32mPASS[0m in 0.89s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:14  17 of 47 PASS relationships_stg_internacao_procedimento_PROC_REA__PROC_REA__ref_stg_procedimentos_  [[32mPASS[0m in 2.50s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:14  21 of 47 PASS relationships_stg_internacoes_COMPLEX__COMPLEX__ref_stg_complexidade_  [[32mPASS[0m in 0.93s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:15  23 of 47 PASS relationships_stg_internacoes_CONTRACEP2__CONTRACEPTIVO__ref_stg_contraceptivos_  [[32mPASS[0m in 0.84s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:15  22 of 47 PASS relationships_stg_internacoes_CONTRACEP1__CONTRACEPTIVO__ref_stg_contraceptivos_  [[32mPASS[0m in 1.08s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:16  24 of 47 PASS relationships_stg_internacoes_DIAGSEC1__CID__source_main_cid_ .... [[32mPASS[0m in 1.06s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:16  26 of 47 PASS relationships_stg_internacoes_DIAGSEC3__CID__source_main_cid_ .... [[32mPASS[0m in 0.87s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:16  25 of 47 PASS relationships_stg_internacoes_DIAGSEC2__CID__source_main_cid_ .... [[32mPASS[0m in 0.91s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:16  27 of 47 PASS relationships_stg_internacoes_DIAGSEC4__CID__source_main_cid_ .... [[32mPASS[0m in 0.65s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:17  29 of 47 PASS relationships_stg_internacoes_DIAGSEC6__CID__source_main_cid_ .... [[32mPASS[0m in 0.57s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:17  28 of 47 PASS relationships_stg_internacoes_DIAGSEC5__CID__source_main_cid_ .... [[32mPASS[0m in 0.62s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:17  30 of 47 PASS relationships_stg_internacoes_DIAGSEC7__CID__source_main_cid_ .... [[32mPASS[0m in 0.54s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:17  31 of 47 PASS relationships_stg_internacoes_DIAGSEC8__CID__source_main_cid_ .... [[32mPASS[0m in 0.23s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:17  32 of 47 PASS relationships_stg_internacoes_DIAGSEC9__CID__source_main_cid_ .... [[32mPASS[0m in 0.48s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:18  34 of 47 PASS relationships_stg_internacoes_DIAG_SECUN__CID__source_main_cid_ .. [[32mPASS[0m in 0.70s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:18  15 of 47 FAIL 95120 internacoes_val_uti_marca_uti_aud2 ......................... [[31mFAIL 95120[0m in 6.15s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:18  33 of 47 PASS relationships_stg_internacoes_DIAG_PRINC__CID__ref_stg_cid_ ...... [[32mPASS[0m in 1.03s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:18  35 of 47 PASS relationships_stg_internacoes_ESPEC__ESPEC__ref_stg_especialidade_  [[32mPASS[0m in 0.86s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:18  36 of 47 PASS relationships_stg_internacoes_ETNIA__ETNIA__ref_stg_etnia_ ....... [[32mPASS[0m in 0.63s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  37 of 47 PASS relationships_stg_internacoes_INSTRU__INSTRU__ref_stg_instrucao_ . [[32mPASS[0m in 1.01s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  38 of 47 PASS relationships_stg_internacoes_MUNIC_RES__CO_MUNICIPIO_6D__source_main_municipios_  [[32mPASS[0m in 1.02s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  39 of 47 PASS relationships_stg_internacoes_NACIONAL__NACIONAL__ref_stg_nacionalidade_  [[32mPASS[0m in 0.81s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  42 of 47 FAIL 73 unique_stg_cbor_DESCRICAO ..................................... [[31mFAIL 73[0m in 0.13s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  43 of 47 FAIL 293 unique_stg_cid_DESCRICAO ..................................... [[31mFAIL 293[0m in 0.08s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  45 of 47 FAIL 1 unique_stg_nacionalidade_DESCRICAO ............................. [[31mFAIL 1[0m in 0.07s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  44 of 47 FAIL 7 unique_stg_especialidade_DESCRICAO ............................. [[31mFAIL 7[0m in 0.11s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  46 of 47 FAIL 153 unique_stg_procedimentos_NOME_PROC ........................... [[31mFAIL 153[0m in 0.11s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  47 of 47 PASS unique_stg_sexo_DESCRICAO ........................................ [[32mPASS[0m in 0.11s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  41 of 47 PASS relationships_stg_internacoes_VINCPREV__VINCPREV__ref_stg_vincprev_  [[32mPASS[0m in 0.49s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  40 of 47 PASS relationships_stg_internacoes_RACA_COR__RACA_COR__ref_stg_raca_cor_  [[32mPASS[0m in 0.97s]
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  [31mCompleted with 8 errors, 0 partial successes, and 0 warnings:[0m
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   [dbt Aud2 test] [0m07:04:19  Done. PASS=39 WARN=0 ERROR=8 SKIP=0 NO-OP=0 TOTAL=47
+2026-04-01 04:04:23 - INFO - data.pipeline_load - 
+  CONTAGEM FINAL DAS TABELAS (pós T2)
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   TABELA                     REGISTROS
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   -------------------------------------
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   municipios                     5,589
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_cid                       14,265
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_procedimentos              5,401
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_complexidade                   4
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_especialidade                 71
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_sexo                           2
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_raca_cor                       6
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_etnia                        265
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_nacionalidade                333
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_instrucao                      5
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_vincprev                       7
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_contraceptivos                13
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   car_int                            6
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_cbor                       2,814
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   marca_uti                         17
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   tempo                          6,210
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_hospital                   6,973
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_internacoes           197,312,203
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   stg_internacao_procedimento 201,514,192
+2026-04-01 04:04:23 - INFO - data.pipeline_load -   socioeconomico                72,395
+2026-04-01 04:04:24 - INFO - __main__ - Etapa 4: Carga ELT no DuckDB concluida com sucesso.
