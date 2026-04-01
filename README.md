@@ -4,6 +4,7 @@
 Este repositório disponibiliza os artefatos científicos do paper, organizados para garantir reprodutibilidade, rastreabilidade e navegação clara dos resultados. Correções pós-publicação estão disponíveis na [Errata](./ERRATA.md).
 ---
 
+<div align="center">
 
 | O que você procura                        | Onde encontrar                                                                         |
 |-------------------------------------------|----------------------------------------------------------------------------------------|
@@ -19,7 +20,7 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 | Testes de qualidade — Aud1                | [testes_aud1.csv](./resultados/testes_aud1.csv)                                        |
 | Testes de qualidade — Aud2                | [testes_aud2.csv](./resultados/testes_aud2.csv)                                        |
 | Relatório de qualidade completo           | [relatorio_qualidade.txt](./resultados/relatorio_qualidade.txt)                        |
-
+</div>
 
 ## Documentação dbt
 
