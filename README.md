@@ -23,6 +23,31 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 | Testes de qualidade — Aud2                | [testes_aud2.csv](./resultados/testes_aud2.csv)                                        |
 | Relatório de qualidade completo           | [relatorio_qualidade.txt](./resultados/relatorio_qualidade.txt)                        |
 
+
+## Documentação dbt
+
+A documentação interativa do projeto está disponível em:
+[https://sbbd2026.github.io/sbbd2026/dbt_docs/](https://sbbd2026.github.io/sbbd2026/dbt_docs/)
+
+A interface é organizada em duas áreas principais, conforme ilustrado abaixo:
+
+![Página inicial da documentação dbt](./docs/imagens/pagina_inicial_doc.png)
+
+- **Dados Brutos (Sources):** contém as 20 tabelas do schema `main` — as fontes originais carregadas no DuckDB. As descrições das colunas e os testes declarativos (nulidade, unicidade,
+relacionamento e domínio) são definidos nos arquivos `.yml`. Cada tabela documenta suas colunas com descrição, tipo e testes associados, conforme ilustrado abaixo para a tabela `main.internacoes`:
+
+![Documentação da tabela main.internacoes](./docs/imagens/main_internacoes.png)
+
+- **Testes e Transformações (Projects):** contém os modelos `.sql` com as transformações do estágio T2, os testes customizados de regras de negócio em SQL e os seeds com tabelas
+auxiliares.
+
+O grafo de linhagem da tabela central do modelo, `stg_internacoes`, ilustra o fluxo completo — das fontes brutas à esquerda, passando pela transformação T2 ao centro,
+até os testes da Aud2 à direita:
+
+![Lineage graph da stg_internacoes](./docs/imagens/stg_internacoes.png)
+
+
+
 ## Modelagem OLAP
 
 O modelo adota o esquema **Snowflake**, implementado no DuckDB, composto por 20 tabelas: 2 tabelas fato, 1 bridge table, 16 tabelas de dimensão e 1 dimensão derivada.
