@@ -112,7 +112,11 @@ HAVING COUNT(*) > 1
 ORDER BY total_codigos DESC;
 ```
 
-**Regra de negócio — `IDADE`:** a regra verifica a coerência entre o campo `IDADE` armazenado e a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, 1.875.400 registros apresentaram divergência, evidenciando erros sistemáticos de preenchimento nos sistemas de origem.
+**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico de interações abaixo:
+
+![Correlação NASC x IDADE](./docs/imagens/corr_idade_nasc.png)
+
+A partir dessas correlações, foram criadas regras que verificam a coerência entre campos relacionados. No caso da `IDADE`, a regra verifica se o valor armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, 1.875.400 registros apresentaram divergência, evidenciando erros sistemáticos de preenchimento nos sistemas de origem. A correção aplicada no T2 recalculou o campo `IDADE` diretamente a partir das datas, eliminando a dependência do valor original. Na Aud2, o teste foi aprovado com zero falhas.
 ```sql
 SELECT
     N_AIH,
@@ -136,6 +140,7 @@ WHERE NASC IS NOT NULL
           END
   )
 ```
+
 
 ![Data Profiling - Tabela Procedimentos](./docs/imagens/data_profiling_procedimentos.png)
 
