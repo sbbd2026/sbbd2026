@@ -150,3 +150,19 @@ WHERE NASC IS NOT NULL
 Com base no data profiling, as correções semânticas foram implementadas no estágio T2 com SQL no dbt. Apenas os casos em que a correção era possível e rastreável foram tratados — limitações estruturais da fonte, como as duplicatas em `procedimentos`, foram documentadas mas não alteradas.
 
 **Tabela `sexo`:** a linha correspondente ao código `2` foi removida com SQL no dbt, mantendo apenas os códigos `1` (Masculino) e `3` (Feminino), que são os únicos presentes nos microdados do SIH/RD. A tabela passou de 3 para 2 registros após o T2.
+
+**Campo `IDADE`:** o campo foi recalculado diretamente a partir das datas `NASC` e `DT_INTER` com SQL no dbt, eliminando a dependência do valor original da fonte. Os 1.875.400 registros com divergência foram corrigidos e o teste foi aprovado com zero falhas na Aud2.
+
+### Auditoria 2 (Aud2)
+
+Após o T2, a Aud2 revalidou um subconjunto de 47 testes críticos sobre os dados transformados:
+
+| Tipo de Teste    | Pass  | Fail  | Total | % Sucesso  |
+|:-----------------|------:|------:|------:|-----------:|
+| Unicidade        |     1 |     5 |     6 |     16,7%  |
+| Relacionamento   |    26 |     0 |    26 |      100%  |
+| Domínio          |     9 |     0 |     9 |      100%  |
+| Regra de negócio |     3 |     3 |     6 |       50%  |
+| **Total**        | **39** | **8** | **47** | **82,97%** |
+
+Os testes de relacionamento e domínio atingiram 100% de aprovação após o T2, confirmando a efetividade das correções aplicadas. As falhas remanescentes concentram-se em testes de unicidade, que refletem limitações estruturais herdadas da fonte DATASUS, e em regras de negócio que permanecem como limitações conhecidas da fonte. Os resultados individuais de cada teste estão disponíveis em [testes_aud2.csv](./resultados/testes_aud2.csv).
