@@ -111,6 +111,7 @@ GROUP BY NOME_PROC
 HAVING COUNT(*) > 1
 ORDER BY total_codigos DESC;
 ```
+![Data Profiling - Tabela Procedimentos](./docs/imagens/data_profiling_procedimentos.png)
 
 **Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico de interações abaixo:
 
@@ -142,7 +143,7 @@ WHERE NASC IS NOT NULL
 ```
 
 
-![Data Profiling - Tabela Procedimentos](./docs/imagens/data_profiling_procedimentos.png)
+
 
 ### Estágio T2 — Transformações e Correções
 
