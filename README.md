@@ -40,7 +40,7 @@ relacionamento e domínio) são definidos nos arquivos `.yml`. Cada tabela docum
 
 - **Projects — Regras de negócio `.sql` + Transformações T2:** contém os modelos `.sql` com as transformações do estágio T2, os testes customizados de regras de negócio em SQL e os testes declarativos `.yml` aplicados aos modelos `stg_*`.
 
-- **Linhagem:** geração automática de um DAG com o fluxo completo dos dados, à esquerda as fontes brutas, ao centro as transformações T2 e à direita os testes da Aud2, conforme ilustrado abaixo:
+- **Linhagem:** geração automática de um DAG com o fluxo completo dos dados, à esquerda as fontes brutas, ao centro as transformações T2 e à direita os testes realizados `.sql` em Aud2, conforme ilustrado abaixo:
 
 ![Lineage graph da stg_internacoes](./docs/imagens/linhagem_internacoes.png)
 
