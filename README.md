@@ -22,3 +22,16 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 | Testes de qualidade — Aud1                | [testes_aud1.csv](./resultados/testes_aud1.csv)                                        |
 | Testes de qualidade — Aud2                | [testes_aud2.csv](./resultados/testes_aud2.csv)                                        |
 | Relatório de qualidade completo           | [relatorio_qualidade.txt](./resultados/relatorio_qualidade.txt)                        |
+
+## Modelagem OLAP
+
+O modelo adota o esquema **Snowflake**, implementado no DuckDB, composto por 20 tabelas: 2 tabelas fato, 1 bridge table, 16 tabelas de dimensão e 1 dimensão derivada.
+
+As 16 tabelas de dimensão refletem a natureza dos microdados do SIH/RD, cujas variáveis são majoritariamente categóricas e codificadas, cada domínio é normalizado em uma tabela
+própria com chave primária, conforme exigido pelo vocabulário analítico do DATASUS.
+
+O modelo é enriquecido pela tabela fato `socioeconomico`, construída a partir de cinco fontes integradas: CNES (leitos e médicos), IBGE (população e PIB per capita), SIM
+(óbitos infantis) e SINASC (nascidos vivos), consolidadas em granularidade município-ano.
+Ao todo, o banco antes de **T2** totaliza **398.940.744 linhas** e pós **T2** **398.940.771**.
+
+![Diagrama Snowflake](./docs/modelagem/snowflake_schema.png)
