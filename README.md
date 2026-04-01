@@ -112,4 +112,35 @@ HAVING COUNT(*) > 1
 ORDER BY total_codigos DESC;
 ```
 
+**Regra de negócio — `IDADE`:** a regra verifica a coerência entre o campo `IDADE` armazenado e a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, 1.875.400 registros apresentaram divergência, evidenciando erros sistemáticos de preenchimento nos sistemas de origem.
+```sql
+SELECT
+    N_AIH,
+    NASC,
+    DT_INTER,
+    IDADE AS idade_armazenada,
+    DATE_DIFF('year', NASC, DT_INTER)
+    - CASE
+        WHEN MONTH(DT_INTER) < MONTH(NASC)
+          OR (MONTH(DT_INTER) = MONTH(NASC) AND DAY(DT_INTER) < DAY(NASC))
+        THEN 1 ELSE 0
+      END AS idade_calculada
+FROM {{ source('main', 'internacoes') }}
+WHERE NASC IS NOT NULL
+  AND IDADE != (
+        DATE_DIFF('year', NASC, DT_INTER)
+        - CASE
+            WHEN MONTH(DT_INTER) < MONTH(NASC)
+              OR (MONTH(DT_INTER) = MONTH(NASC) AND DAY(DT_INTER) < DAY(NASC))
+            THEN 1 ELSE 0
+          END
+  )
+```
+
 ![Data Profiling - Tabela Procedimentos](./docs/imagens/data_profiling_procedimentos.png)
+
+### Estágio T2 — Transformações e Correções
+
+Com base no data profiling, as correções semânticas foram implementadas no estágio T2 com SQL no dbt. Apenas os casos em que a correção era possível e rastreável foram tratados — limitações estruturais da fonte, como as duplicatas em `procedimentos`, foram documentadas mas não alteradas.
+
+**Tabela `sexo`:** a linha correspondente ao código `2` foi removida com SQL no dbt, mantendo apenas os códigos `1` (Masculino) e `3` (Feminino), que são os únicos presentes nos microdados do SIH/RD. A tabela passou de 3 para 2 registros após o T2.
