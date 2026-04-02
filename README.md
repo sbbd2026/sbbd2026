@@ -74,9 +74,6 @@ A fórmula utilizada em todos os resultados e sua aplicação para o teste da ta
   <img src="./docs/imagens/formula.png" alt="Fórmula de cálculo do percentual de erro" width="600">
 </div>
 
-<div align="center">
-  <img src="./docs/imagens/formula.png" alt="descrição" width="600">
-</div>
 
 Os resultados dos testes agrupados em Aud1 são apresentados a seguir:
 <div align="center">
