@@ -11,7 +11,7 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 | Documentação dos modelos, testes e lineage| [Documentação dbt](https://sbbd2026.github.io/sbbd2026/dbt_docs/)                      |
 | Diagrama do modelo OLAP                   | [Modelagem](./docs/modelagem/snowflake_schema.png)                                     |
 | Dicionário de todas as tabelas            | [Dicionário de Dados](./docs/dicionario_dados.pdf)                                     |
-| Log bruto do pipeline (Aud1, T2, Aud2                    | [log_bruto.log](./pipeline/log_bruto.log)                                              |
+| Log bruto do pipeline (Aud1, T2, Aud2)    | [log_bruto.log](./pipeline/log_bruto.log)                                              |
 | Script de extração de métricas            | [extrair_metricas.py](./pipeline/extrair_metricas.py)                                  |
 | Resumo geral do pipeline                  | [resumo_pipeline.csv](./resultados/resumo_pipeline.csv)                                |
 | Carga por UF                              | [carga_por_uf.csv](./resultados/carga_por_uf.csv)                                      |
