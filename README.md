@@ -62,7 +62,17 @@ Ao todo, o banco antes de **T2** totaliza **398.940.744 linhas** e pós **T2** *
 
 A camada de qualidade é implementada com testes declarativos no dbt, organizados em duas auditorias: Aud1, executada sobre os dados brutos após a carga inicial, e Aud2, executada após as transformações do estágio T2. Os resultados completos de ambas as auditorias estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv) e [testes_aud2.csv](./resultados/testes_aud2.csv), contendo para cada teste: tipo, status (aprovado/reprovado), quantidade de registros com falha, universo de análise e percentual de erro sobre o universo.
 
-O universo de análise representa o denominador utilizado para calcular o percentual de erro de cada teste. Ele varia conforme o contexto do teste: testes sobre tabelas de dimensão utilizam o total de registros da própria dimensão, enquanto testes sobre a tabela fato utilizam o total de internações. Por exemplo, o teste de unicidade sobre a coluna `DESCRICAO` da tabela `sexo`, que possui apenas 3 registros, falhou pois o dicionário do DATASUS registra dois códigos para o sexo feminino (`2` e `3`), resultando em descrições duplicadas. Neste caso, o universo é 3 e o percentual de erro é calculado sobre esse total, e não sobre os 197.312.203 registros de internações. A fórmula utilizada em todos os resultados e sua aplicação para o teste da tabela `sexo` são apresentadas a seguir:
+O universo de análise representa o denominador utilizado para calcular o percentual de erro de cada teste. Ele varia conforme o contexto semântico do teste:
+
+- **Testes sobre tabelas de dimensão:** utilizam o total de registros da própria dimensão. Por exemplo, o teste de unicidade sobre `DESCRICAO` da tabela `sexo` tem universo 3, pois a tabela possui apenas 3 registros.
+- **Testes sobre a tabela fato:** utilizam o total de internações (197.312.203) como denominador padrão.
+- **Testes sobre subconjuntos semânticos:** quando a regra de negócio se aplica apenas a um subconjunto da fato, o universo é restrito a esse grupo. Por exemplo, o teste `UTI_INT_TO / MARCA_UTI` considera apenas as internações onde houve uso de UTI, e não o total de internações.
+
+A fórmula utilizada em todos os resultados e sua aplicação para o teste da tabela `sexo` são apresentadas a seguir:
+
+<div align="center">
+  <img src="./docs/imagens/formula.png" alt="Fórmula de cálculo do percentual de erro" width="600">
+</div>
 
 <div align="center">
   <img src="./docs/imagens/formula.png" alt="descrição" width="600">
@@ -81,7 +91,7 @@ Os resultados dos testes agrupados em Aud1 são apresentados a seguir:
 | **Total**        | **156** | **47** | **203** | **76,85%** |
 </div>
 
-A baixa taxa de aprovação nos testes de relacionamento (18,8%) é diretamente explicada pela vacância semântica identificada: colunas como `RACA_COR`, `INSTRU`, `VINCPREV` e `CBOR`, preenchidas com `0` na fonte, não encontram correspondência nas tabelas de dimensão, gerando falhas de integridade referencial em massa. Os resultados individuais de cada teste, com o detalhamento por variável, universo de análise e percentual de erro, estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv).
+A baixa taxa de aprovação nos testes de relacionamento (18,8%) é diretamente explicada por registros cujo valor `0` não possui correspondência no dicionário do DATASUS: colunas como `RACA_COR`, `INSTRU`, `VINCPREV` e `CBOR`, preenchidas com `0` na fonte, não encontram correspondência nas tabelas de dimensão, gerando falhas de integridade referencial em massa. Os resultados individuais de cada teste, com o detalhamento por variável, universo de análise e percentual de erro, estão disponíveis em [testes_aud1.csv](./resultados/testes_aud1.csv).
 
 ### Data Profiling
 
