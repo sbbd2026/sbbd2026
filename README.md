@@ -119,24 +119,21 @@ ORDER BY total_codigos DESC;
 ```
 ![Data Profiling - Tabela Procedimentos](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/data_profiling_procedimentos.png)
 
-**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico de interações abaixo:
+**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE` — quanto maior a idade, mais antiga a data de nascimento — é semanticamente esperada e confirmada pelo gráfico de interações abaixo:
 
-![Correlação NASC x IDADE](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/corr_idade_nasc.png)
+![Correlação NASC x IDADE](./docs/imagens/corr_idade_nasc.png)
 
-A partir dessas correlações, foram criadas regras que verificam a coerência entre campos relacionados. No caso da `IDADE`, a regra verifica se o valor armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, 1.875.400 registros apresentaram divergência, evidenciando erros sistemáticos de preenchimento nos sistemas de origem. A correção aplicada no T2 recalculou o campo `IDADE` diretamente a partir das datas, eliminando a dependência do valor original. Na Aud2, o teste foi aprovado com zero falhas.
+A partir dessa correlação, foi criada uma regra de negócio no dbt que verifica se o valor de `IDADE` armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, 1.875.400 registros apresentaram divergência. Para investigar a natureza dessas falhas, foi realizado um profiling da variável com a seguinte query:
 ```sql
 SELECT
-    N_AIH,
-    NASC,
-    DT_INTER,
-    IDADE AS idade_armazenada,
-    DATE_DIFF('year', NASC, DT_INTER)
+    (DATE_DIFF('year', NASC, DT_INTER)
     - CASE
         WHEN MONTH(DT_INTER) < MONTH(NASC)
           OR (MONTH(DT_INTER) = MONTH(NASC) AND DAY(DT_INTER) < DAY(NASC))
         THEN 1 ELSE 0
-      END AS idade_calculada
-FROM {{ source('main', 'internacoes') }}
+      END) - IDADE AS diferenca_anos,
+    COUNT(*) AS total
+FROM internacoes
 WHERE NASC IS NOT NULL
   AND IDADE != (
         DATE_DIFF('year', NASC, DT_INTER)
@@ -146,8 +143,15 @@ WHERE NASC IS NOT NULL
             THEN 1 ELSE 0
           END
   )
+GROUP BY diferenca_anos
+ORDER BY total DESC;
 ```
 
+![Profiling da variável IDADE](./docs/imagens/idade_profiling.png)
+
+O resultado revela dois padrões distintos. O primeiro e dominante é uma diferença de **-1 ano** em 1.866.308 registros, indicando que o sistema de origem registrou a idade como se o aniversário já tivesse ocorrido no ano da internação, quando pelo cálculo exato das datas ainda não havia. O segundo padrão são os 14 registros com diferença de **130 anos**, provavelmente decorrentes de `COD_IDADE` não preenchido corretamente, fazendo com que a idade seja interpretada na unidade errada.
+
+A correção aplicada no T2 recalculou o campo `IDADE` diretamente a partir das datas `NASC` e `DT_INTER` com SQL no dbt, eliminando a dependência do valor original da fonte. Na Aud2, o teste foi aprovado com zero falhas.
 
  
 
