@@ -154,7 +154,7 @@ WHERE NASC IS NOT NULL
 
 ### Estágio T2 — Transformações e Correções
 
-Com base no data profiling, as correções semânticas foram implementadas no estágio T2 com SQL no dbt. Apenas os casos em que a correção era possível e rastreável foram tratados — limitações estruturais da fonte, como as duplicatas em `procedimentos`, foram documentadas mas não alteradas.
+Com base no data profiling, as correções semânticas foram implementadas no estágio T2 com SQL no dbt. Apenas os casos em que a correção era possível e rastreável foram tratados, limitações estruturais da fonte, como as duplicatas em `procedimentos`, foram documentadas mas não alteradas.
 
 **Tabela `sexo`:** a linha correspondente ao código `2` foi removida com SQL no dbt, mantendo apenas os códigos `1` (Masculino) e `3` (Feminino), que são os únicos presentes nos microdados do SIH/RD. A tabela passou de 3 para 2 registros após o T2.
 
