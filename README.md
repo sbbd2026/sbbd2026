@@ -94,64 +94,22 @@ A baixa taxa de aprovação nos testes de relacionamento (18,8%) é diretamente 
 Após a identificação das falhas na Aud1, foi realizado data profiling via SQL diretamente no SGBD DBeaver para compreender a natureza de cada inconsistência antes da implementação das correções no estágio T2.
 
 **Tabela `sexo`:** o profiling revelou que o dicionário do DATASUS registra dois códigos para o sexo feminino (`2` e `3`), enquanto os microdados do SIH/RD utilizam exclusivamente os códigos `1` e `3`. O código `2` nunca aparece nos registros de internação. A correção aplicada no T2 foi a remoção da linha correspondente ao código `2`.
-```sql
-SELECT 
-    SEXO,
-    DESCRICAO,
-    COUNT(*) AS total
-FROM sexo
-GROUP BY SEXO, DESCRICAO
-ORDER BY SEXO;
-```
 
 ![Data Profiling - Tabela Sexo](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/data_profiling_sexo.png)
 
 **Tabela `procedimentos`:** o profiling identificou 153 casos de `NOME_PROC` duplicado para códigos `PROC_REA` distintos, limitação herdada da própria tabela SIGTAP do DATASUS. Neste caso, nenhuma correção foi aplicada, pois a duplicidade reflete a realidade da fonte oficial.
-```sql
-SELECT 
-    NOME_PROC,
-    COUNT(*) AS total_codigos,
-    LIST(PROC_REA) AS codigos
-FROM procedimentos
-GROUP BY NOME_PROC
-HAVING COUNT(*) > 1
-ORDER BY total_codigos DESC;
-```
+
 ![Data Profiling - Tabela Procedimentos](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/data_profiling_procedimentos.png)
 
-**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE` — quanto maior a idade, mais antiga a data de nascimento — é semanticamente esperada e confirmada pelo gráfico de interações abaixo:
+**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico abaixo:
 
 ![Correlação NASC x IDADE](./docs/imagens/corr_idade_nasc.png)
 
-A partir dessa correlação, foi criada uma regra de negócio no dbt que verifica se o valor de `IDADE` armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, 1.875.400 registros apresentaram divergência. Para investigar a natureza dessas falhas, foi realizado um profiling da variável com a seguinte query:
-```sql
-SELECT
-    (DATE_DIFF('year', NASC, DT_INTER)
-    - CASE
-        WHEN MONTH(DT_INTER) < MONTH(NASC)
-          OR (MONTH(DT_INTER) = MONTH(NASC) AND DAY(DT_INTER) < DAY(NASC))
-        THEN 1 ELSE 0
-      END) - IDADE AS diferenca_anos,
-    COUNT(*) AS total
-FROM internacoes
-WHERE NASC IS NOT NULL
-  AND IDADE != (
-        DATE_DIFF('year', NASC, DT_INTER)
-        - CASE
-            WHEN MONTH(DT_INTER) < MONTH(NASC)
-              OR (MONTH(DT_INTER) = MONTH(NASC) AND DAY(DT_INTER) < DAY(NASC))
-            THEN 1 ELSE 0
-          END
-  )
-GROUP BY diferenca_anos
-ORDER BY total DESC;
-```
+A partir dessa correlação, foi criada uma regra de negócio no dbt que verifica se o valor de `IDADE` armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, a regra falhou em 1.875.400 registros. Para entender a natureza dessas falhas, foi realizado um segundo profiling, desta vez diretamente no banco, calculando a distribuição da diferença entre a idade armazenada e a idade calculada:
 
 ![Profiling da variável IDADE](./docs/imagens/idade_profiling.png)
 
-O resultado revela dois padrões distintos. O primeiro e dominante é uma diferença de **-1 ano** em 1.866.308 registros, indicando que o sistema de origem registrou a idade como se o aniversário já tivesse ocorrido no ano da internação, quando pelo cálculo exato das datas ainda não havia. O segundo padrão são os 14 registros com diferença de **130 anos**, provavelmente decorrentes de `COD_IDADE` não preenchido corretamente, fazendo com que a idade seja interpretada na unidade errada.
-
-A correção aplicada no T2 recalculou o campo `IDADE` diretamente a partir das datas `NASC` e `DT_INTER` com SQL no dbt, eliminando a dependência do valor original da fonte. Na Aud2, o teste foi aprovado com zero falhas.
+O resultado revela dois padrões distintos. O primeiro e dominante é uma diferença de **-1 ano** em 1.866.308 registros, indicando que o sistema de origem registrou a idade como se o aniversário já tivesse ocorrido no ano da internação, quando pelo cálculo exato das datas ainda não havia. O segundo padrão são os 14 registros com diferença de **130 anos**, provavelmente decorrentes de `COD_IDADE` não preenchido corretamente, fazendo com que a idade seja interpretada na unidade errada. Com base nesse profiling, a correção no T2 recalculou o campo `IDADE` diretamente a partir das datas `NASC` e `DT_INTER` com SQL no dbt, eliminando a dependência do valor original da fonte. Na Aud2, o teste foi aprovado com zero falhas.
 
  
 
