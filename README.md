@@ -101,7 +101,7 @@ Após a identificação das falhas na Aud1, foi realizado data profiling via SQL
 
 ![Data Profiling - Tabela Procedimentos](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/data_profiling_procedimentos.png)
 
-**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico abaixo:
+**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra aleatória de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico abaixo:
 
 ![Correlação NASC x IDADE](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/corr_idade_nasc.png)
 
