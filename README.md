@@ -29,7 +29,7 @@ A documentação interativa do projeto está disponível em:
 
 A seguir estão as áreas da interface utilizadas nesta pesquisa:
 
-![Página inicial da documentação dbt](docs/imagens/pagina_inicial_doc.png)
+![Página inicial da documentação dbt](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/pagina_inicial_doc.png)
 
 - **Dados Brutos (Sources):** contém as 20 tabelas do schema `main` — as fontes originais carregadas no DuckDB. As descrições das colunas e os testes declarativos (nulidade, unicidade,
 relacionamento e domínio) são definidos nos arquivos `.yml`. Cada tabela documenta suas colunas com descrição, tipo e testes associados, conforme ilustrado abaixo para a tabela `main.internacoes`:
