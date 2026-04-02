@@ -153,7 +153,7 @@ WHERE NASC IS NOT NULL
 ```
 
 
-
+ 
 
 ### Estágio T2 — Transformações e Correções
 
