@@ -11,7 +11,7 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 | Documentação dos modelos, testes e lineage| [Documentação dbt](https://sbbd2026.github.io/sbbd2026/dbt_docs/)                      |
 | Diagrama do modelo OLAP                   | [Modelagem](./docs/modelagem/snowflake_schema.png)                                     |
 | Dicionário de todas as tabelas            | [Dicionário de Dados](./docs/dicionario_dados.pdf)                                     |
-| Log bruto do pipeline                     | [log_bruto.log](./pipeline/log_bruto.log)                                              |
+| Log bruto do pipeline (Aud1, T2, Aud2                    | [log_bruto.log](./pipeline/log_bruto.log)                                              |
 | Script de extração de métricas            | [extrair_metricas.py](./pipeline/extrair_metricas.py)                                  |
 | Resumo geral do pipeline                  | [resumo_pipeline.csv](./resultados/resumo_pipeline.csv)                                |
 | Carga por UF                              | [carga_por_uf.csv](./resultados/carga_por_uf.csv)                                      |
@@ -103,11 +103,11 @@ Após a identificação das falhas na Aud1, foi realizado data profiling via SQL
 
 **Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico abaixo:
 
-![Correlação NASC x IDADE](./docs/imagens/corr_idade_nasc.png)
+![Correlação NASC x IDADE](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/corr_idade_nasc.png)
 
 A partir dessa correlação, foi criada uma regra de negócio no dbt que verifica se o valor de `IDADE` armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, a regra falhou em 1.875.400 registros. Para entender a natureza dessas falhas, foi realizado um segundo profiling, desta vez diretamente no banco, calculando a distribuição da diferença entre a idade armazenada e a idade calculada:
 
-![Profiling da variável IDADE](./docs/imagens/idade_profiling.png)
+![Profiling da variável IDADE](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/idade_profiling.png)
 
 O resultado revela dois padrões distintos. O primeiro e dominante é uma diferença de **-1 ano** em 1.866.308 registros, indicando que o sistema de origem registrou a idade como se o aniversário já tivesse ocorrido no ano da internação, quando pelo cálculo exato das datas ainda não havia. O segundo padrão são os 14 registros com diferença de **130 anos**, provavelmente decorrentes de `COD_IDADE` não preenchido corretamente, fazendo com que a idade seja interpretada na unidade errada. Com base nesse profiling, a correção no T2 recalculou o campo `IDADE` diretamente a partir das datas `NASC` e `DT_INTER` com SQL no dbt, eliminando a dependência do valor original da fonte. Na Aud2, o teste foi aprovado com zero falhas.
 
@@ -137,3 +137,9 @@ Após o T2, a Aud2 revalidou um subconjunto de 47 testes críticos sobre os dado
 </div>
 
 Os testes de relacionamento e domínio atingiram 100% de aprovação após o T2, confirmando a efetividade das correções aplicadas. As falhas remanescentes concentram-se em testes de unicidade, que refletem limitações estruturais herdadas da fonte DATASUS, e em regras de negócio que permanecem como limitações conhecidas da fonte. Os resultados individuais de cada teste estão disponíveis em [testes_aud2.csv](./resultados/testes_aud2.csv).
+
+## Considerações Finais
+
+Os resultados demonstram que a governança de dados é um pré-requisito para análises confiáveis sobre os microdados do SUS. Rastrear o que acontece com o dado em cada etapa do pipeline, da carga bruta ao modelo curado, permitiu reduzir as falhas de 47 para 8 em um conjunto de 203 testes declarativos, evidenciando que a combinação de auditoria sistemática, data profiling e transformações rastreáveis é efetiva para elevar a qualidade de repositórios de saúde pública de grande escala.
+
+Esta pesquisa adota uma abordagem aberta e reproduzível. Todo o código-fonte do pipeline, os modelos dbt e os testes declarativos serão disponibilizados publicamente após o aceite do artigo.
