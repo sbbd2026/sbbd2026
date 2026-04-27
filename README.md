@@ -8,6 +8,7 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 
 | O que você procura                        | Onde encontrar                                                                         |
 |-------------------------------------------|----------------------------------------------------------------------------------------|
+| Fluxo do pipeline                         | [fluxo.png](./docs/imagens/fluxo.png)                                                    |
 | Documentação dos modelos, testes e lineage| [Documentação dbt](https://sbbd2026.github.io/sbbd2026/dbt_docs/)                      |
 | Diagrama do modelo OLAP                   | [Modelagem](./docs/modelagem/snowflake_schema.png)                                     |
 | Dicionário de todas as tabelas            | [Dicionário de Dados](./docs/dicionario_dados.pdf)                                     |
@@ -33,26 +34,6 @@ Após a ingestão, o ciclo de qualidade é orquestrado pelo dbt em três etapas:
 - **Aud. 1** executa testes declarativos sobre os dados carregados (nulidade, unicidade, relacionamento, domínio e regras de negócio);
 - Os registros que falham alimentam o estágio **T2**, onde as correções são implementadas em SQL no dbt, guiadas por *data profiling* realizado diretamente no banco;
 - **Aud. 2** revalida as transformações sobre um subconjunto crítico de testes, garantindo a conformidade dos dados antes da camada analítica. Falhas remanescentes na Aud. 2 retroalimentam o T2 para novas rodadas de correção.
-
-## Documentação dbt
-
-A documentação interativa do projeto está disponível em:
-[https://sbbd2026.github.io/sbbd2026/dbt_docs/](https://sbbd2026.github.io/sbbd2026/dbt_docs/)
-
-A seguir estão as áreas da interface utilizadas nesta pesquisa:
-
-![Página inicial da documentação dbt](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/pagina_inicial_doc.png)
-
-- **Dados Brutos (Sources):** contém as 20 tabelas do schema `main` — as fontes originais carregadas no DuckDB. As descrições das colunas e os testes declarativos (nulidade, unicidade,
-relacionamento e domínio) são definidos nos arquivos `.yml`. Cada tabela documenta suas colunas com descrição, tipo e testes associados, conforme ilustrado abaixo para a tabela `main.internacoes`:
-
-![Documentação da tabela main.internacoes](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/main_internacoes.png)
-
-- **Projects — Regras de negócio `.sql` + Transformações T2:** contém os modelos `.sql` com as transformações do estágio T2, os testes customizados de regras de negócio em SQL e os testes declarativos `.yml` aplicados aos modelos `stg_*`.
-
-- **Linhagem:** geração automática de um DAG com o fluxo completo dos dados, à esquerda as fontes brutas, ao centro as transformações T2 e à direita os testes realizados `.sql` em Aud2, conforme ilustrado abaixo:
-
-![Lineage graph da stg_internacoes](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/linhagem_internacoes.png)
 
 
 ## Modelagem OLAP
@@ -103,7 +84,9 @@ A baixa taxa de aprovação nos testes de relacionamento (18,8%) é diretamente 
 
 ### Data Profiling
 
-Após a identificação das falhas na Aud1, foi realizado data profiling via SQL diretamente no SGBD DBeaver para compreender a natureza de cada inconsistência antes da implementação das correções no estágio T2.
+O *data profiling* foi realizado por dois motivos distintos: investigar as falhas apontadas pela Aud. 1, compreendendo a natureza de cada inconsistência antes de implementar as correções no T2; e orientar a criação de regras de negócio, identificando variáveis semanticamente correlacionadas que permitiram definir validações mais precisas sobre os dados.
+
+#### Investigação de falhas da Aud. 1
 
 **Tabela `sexo`:** o profiling revelou que o dicionário do DATASUS registra dois códigos para o sexo feminino (`2` e `3`), enquanto os microdados do SIH/RD utilizam exclusivamente os códigos `1` e `3`. O código `2` nunca aparece nos registros de internação. A correção aplicada no T2 foi a remoção da linha correspondente ao código `2`.
 
@@ -113,15 +96,17 @@ Após a identificação das falhas na Aud1, foi realizado data profiling via SQL
 
 ![Data Profiling - Tabela Procedimentos](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/data_profiling_procedimentos.png)
 
-**Regra de negócio — `IDADE`:** as regras de negócio foram definidas a partir de uma análise exploratória dos dados. Uma amostra aleatória de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE`, quanto maior a idade, mais antiga a data de nascimento, é semanticamente esperada e confirmada pelo gráfico abaixo:
+#### Definição de regras de negócio
+
+Uma amostra aleatória de 100.000 registros foi extraída do banco e submetida ao ydata profiling, que permitiu identificar variáveis semanticamente correlacionadas. A correlação negativa entre `NASC` e `IDADE` — quanto maior a idade, mais antiga a data de nascimento — é semanticamente esperada e confirmada pelo gráfico abaixo:
 
 ![Correlação NASC x IDADE](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/corr_idade_nasc.png)
 
-A partir dessa correlação, foi criada uma regra de negócio no dbt que verifica se o valor de `IDADE` armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud1, a regra falhou em 1.875.400 registros. Para entender a natureza dessas falhas, foi realizado um segundo profiling, desta vez diretamente no banco, calculando a distribuição da diferença entre a idade armazenada e a idade calculada:
+A partir dessa correlação, foi criada uma regra de negócio no dbt que verifica se o valor de `IDADE` armazenado é consistente com a idade calculada a partir das datas `NASC` e `DT_INTER`. Na Aud. 1, a regra falhou em 1.875.400 registros. Para entender a natureza dessas falhas, foi realizado um segundo profiling diretamente no banco, calculando a distribuição da diferença entre a idade armazenada e a idade calculada:
 
 ![Profiling da variável IDADE](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/idade_profiling.png)
 
-O resultado revela dois padrões distintos. O primeiro e dominante é uma diferença de **-1 ano** em 1.866.308 registros, indicando que o sistema de origem registrou a idade como se o aniversário já tivesse ocorrido no ano da internação, quando pelo cálculo exato das datas ainda não havia. O segundo padrão são os 14 registros com diferença de **130 anos**, provavelmente decorrentes de `COD_IDADE` não preenchido corretamente, fazendo com que a idade seja interpretada na unidade errada. Com base nesse profiling, a correção no T2 recalculou o campo `IDADE` diretamente a partir das datas `NASC` e `DT_INTER` com SQL no dbt, eliminando a dependência do valor original da fonte. Na Aud2, o teste foi aprovado com zero falhas.
+O resultado revela dois padrões distintos. O primeiro e dominante é uma diferença de **-1 ano** em 1.866.308 registros, indicando que o sistema de origem registrou a idade como se o aniversário já tivesse ocorrido no ano da internação, quando pelo cálculo exato das datas ainda não havia. O segundo são os 14 registros com diferença de **130 anos**, provavelmente decorrentes de `COD_IDADE` não preenchido corretamente, fazendo com que a idade seja interpretada na unidade errada. Com base nesse profiling, a correção no T2 recalculou o campo `IDADE` diretamente a partir das datas `NASC` e `DT_INTER`, eliminando a dependência do valor original da fonte. Na Aud. 2, o teste foi aprovado com zero falhas.
 
  
 
@@ -149,6 +134,27 @@ Após o T2, a Aud2 revalidou um subconjunto de 47 testes críticos sobre os dado
 </div>
 
 Os testes de relacionamento e domínio atingiram 100% de aprovação após o T2, confirmando a efetividade das correções aplicadas. As falhas remanescentes concentram-se em testes de unicidade, que refletem limitações estruturais herdadas da fonte DATASUS, e em regras de negócio que permanecem como limitações conhecidas da fonte. Os resultados individuais de cada teste estão disponíveis em [testes_aud2.csv](./resultados/testes_aud2.csv).
+
+## Documentação dbt
+
+A documentação interativa do projeto está disponível em:
+[https://sbbd2026.github.io/sbbd2026/dbt_docs/](https://sbbd2026.github.io/sbbd2026/dbt_docs/)
+
+A seguir estão as áreas da interface utilizadas nesta pesquisa:
+
+![Página inicial da documentação dbt](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/pagina_inicial_doc.png)
+
+- **Dados Brutos (Sources):** contém as 20 tabelas do schema `main` — as fontes originais carregadas no DuckDB. As descrições das colunas e os testes declarativos (nulidade, unicidade,
+relacionamento e domínio) são definidos nos arquivos `.yml`. Cada tabela documenta suas colunas com descrição, tipo e testes associados, conforme ilustrado abaixo para a tabela `main.internacoes`:
+
+![Documentação da tabela main.internacoes](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/main_internacoes.png)
+
+- **Projects — Regras de negócio `.sql` + Transformações T2:** contém os modelos `.sql` com as transformações do estágio T2, os testes customizados de regras de negócio em SQL e os testes declarativos `.yml` aplicados aos modelos `stg_*`.
+
+- **Linhagem:** geração automática de um DAG com o fluxo completo dos dados, à esquerda as fontes brutas, ao centro as transformações T2 e à direita os testes realizados `.sql` em Aud2, conforme ilustrado abaixo:
+
+![Lineage graph da stg_internacoes](https://raw.githubusercontent.com/sbbd2026/sbbd2026/main/docs/imagens/linhagem_internacoes.png)
+
 
 ## Considerações Finais
 
