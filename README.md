@@ -26,7 +26,7 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 
 ![Pipeline ETLT](./docs/imagens/fluxo.png)
 
-O pré-processamento (**T1**) utiliza a biblioteca [Polars](https://pola.rs/) para realizar transformações em memória, com foco em *downcasting* de tipos, padronização de strings e normalização da variável `IDADE`, seguido de carga no DuckDB (**Load**). Ambos os estágios operam sobre os dados **particionados**, processando cada partição independentemente.
+O pré-processamento (**T1**) utiliza a biblioteca Polars para realizar transformações em memória, com foco em *downcasting* de tipos, padronização de strings e normalização da variável `IDADE`, seguido de carga no DuckDB (**Load**). Ambos os estágios operam sobre os dados **particionados**, processando cada partição independentemente.
 
 Após a ingestão, o ciclo de qualidade é orquestrado pelo dbt em três etapas:
 
