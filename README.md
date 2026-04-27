@@ -22,6 +22,18 @@ Este repositório disponibiliza os artefatos científicos do paper, organizados 
 | Relatório de qualidade completo           | [relatorio_qualidade.txt](./resultados/relatorio_qualidade.txt)                        |
 </div>
 
+## Pipeline
+
+![Pipeline ETLT](./docs/imagens/fluxo.png)
+
+O pré-processamento (**T1**) utiliza a biblioteca [Polars](https://pola.rs/) para realizar transformações em memória, com foco em *downcasting* de tipos, padronização de strings e normalização da variável `IDADE`, seguido de carga no DuckDB (**Load**). Ambos os estágios operam sobre os dados **particionados**, processando cada partição independentemente.
+
+Após a ingestão, o ciclo de qualidade é orquestrado pelo dbt em três etapas:
+
+- **Aud. 1** executa testes declarativos sobre os dados carregados (nulidade, unicidade, relacionamento, domínio e regras de negócio);
+- Os registros que falham alimentam o estágio **T2**, onde as correções são implementadas em SQL no dbt, guiadas por *data profiling* realizado diretamente no banco;
+- **Aud. 2** revalida as transformações sobre um subconjunto crítico de testes, garantindo a conformidade dos dados antes da camada analítica. Falhas remanescentes na Aud. 2 retroalimentam o T2 para novas rodadas de correção.
+
 ## Documentação dbt
 
 A documentação interativa do projeto está disponível em:
